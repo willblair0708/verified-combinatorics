@@ -53,6 +53,32 @@ def is_Bh(vecs, h):
     return True, len(sums)
 
 
+def load_ints(path):
+    """Load one integer per line (GF(2)^n element as a bitmask); '#' lines ignored."""
+    out = []
+    with open(path) as f:
+        for line in f:
+            line = line.strip()
+            if not line or line.startswith("#"):
+                continue
+            out.append(int(line))
+    return out
+
+
+def is_gf2_sidon(elems):
+    """GF(2)^n Sidon: all pairwise XORs distinct (no four distinct elements XOR to 0)."""
+    if len(set(elems)) != len(elems):
+        return False, "duplicate element"
+    seen = set()
+    for i in range(len(elems)):
+        for j in range(i + 1, len(elems)):
+            x = elems[i] ^ elems[j]
+            if x == 0 or x in seen:
+                return False, "XOR collision"
+            seen.add(x)
+    return True, len(seen)
+
+
 def verify_all():
     here = os.path.dirname(os.path.abspath(__file__))
     rows = []
@@ -67,6 +93,14 @@ def verify_all():
             n = len(vecs[0]) if vecs else 0
             ok, info = is_Bh(vecs, h)
             rows.append((fn, label, n, len(vecs), ok, info))
+    # GF(2)^n Sidon sets (integers per line, XOR semantics)
+    gd = os.path.join(here, "gf2-sidon-A394031")
+    if os.path.isdir(gd):
+        for fn in sorted(f for f in os.listdir(gd) if f.endswith(".txt")):
+            elems = load_ints(os.path.join(gd, fn))
+            n = max(elems).bit_length() if elems else 0
+            ok, info = is_gf2_sidon(elems)
+            rows.append((fn, "GF2", n, len(elems), ok, info))
     print(f"{'file':28s} {'type':5s} {'n':>3s} {'size':>5s}  verified")
     all_ok = True
     for fn, label, n, size, ok, info in rows:

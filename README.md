@@ -41,12 +41,29 @@ Every `B_3` set is also a `B_2` set, so its size is at most the corresponding A3
 The maximum sizes for small `n`, each proven optimal by an integer-program search and verified
 here, are:
 
-| n | 0 | 1 | 2 | 3 | 4 | 5 |
-|---|---|---|---|---|---|---|
-| max size | 1 | 2 | 3 | 4 | 6 | 8 |
+| n | 0 | 1 | 2 | 3 | 4 | 5 | 6 |
+|---|---|---|---|---|---|---|---|
+| max size | 1 | 2 | 3 | 4 | 6 | 8 | 11 |
 
-with `a(6) >= 11` and `a(7) >= 14` known from search but not proven optimal.
+a(6) = 11 is proven optimal (the size-12 case is infeasible, shown by an integer-program search
+with hyperoctahedral symmetry breaking). `a(7) >= 14` is a search lower bound, not proven optimal.
 `b3_search.py` is the search program (requires OR-Tools); `verify.py` needs only Python 3.
+
+## `gf2-sidon-A394031/` — Sidon sets in GF(2)^n (mod-2)
+
+A set is a Sidon set in GF(2)^n iff all pairwise XOR-sums are distinct (no four distinct elements
+XOR to zero). This is the mod-2 analog of the integer Sidon sets above. Elements are written one
+integer per line (an n-bit vector). For [OEIS A394031](https://oeis.org/A394031), a(1..10) =
+2,3,4,6,7,9,12,18,24,34 are proven and a(11) was open with no recorded lower bound. The set here
+gives:
+
+| n | size (lower bound) | prior recorded on OEIS |
+|---|--------------------|------------------------|
+| 11 | 48 | (none) |
+
+verified by recomputing all C(48,2) = 1128 pairwise XORs and checking they are distinct. The
+construction starts from the graph of the Gold APN function x -> x^3 over GF(2^5) (a provably
+Sidon set) and greedily extends it. It improves the recorded OEIS state; it is not claimed optimal.
 
 ## License
 

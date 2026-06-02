@@ -1,0 +1,12 @@
+# Maximum B_3 set in {0,1}^6: size 11 (PROVEN OPTIMAL by exhaustive integer-program search with hyperoctahedral symmetry breaking; independently verified)
+000010
+000100
+000111
+001000
+011010
+011101
+101001
+101110
+110001
+110100
+111111
