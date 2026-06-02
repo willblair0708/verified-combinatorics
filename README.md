@@ -54,16 +54,15 @@ with hyperoctahedral symmetry breaking). `a(7) >= 14` is a search lower bound, n
 A set is a Sidon set in GF(2)^n iff all pairwise XOR-sums are distinct (no four distinct elements
 XOR to zero). This is the mod-2 analog of the integer Sidon sets above. Elements are written one
 integer per line (an n-bit vector). For [OEIS A394031](https://oeis.org/A394031), a(1..10) =
-2,3,4,6,7,9,12,18,24,34 are proven and a(11) was open with no recorded lower bound. The set here
-gives:
+2,3,4,6,7,9,12,18,24,34 are proven. The set here has size 48 in F_2^11.
 
-| n | size (lower bound) | prior recorded on OEIS |
-|---|--------------------|------------------------|
-| 11 | 48 | (none) |
-
-verified by recomputing all C(48,2) = 1128 pairwise XORs and checking they are distinct. The
-construction starts from the graph of the Gold APN function x -> x^3 over GF(2^5) (a provably
-Sidon set) and greedily extends it. It improves the recorded OEIS state; it is not claimed optimal.
+**This is a reproduction of a known result, not a new one.** Czerwiński & Pott,
+[*On large Sidon sets*](https://arxiv.org/abs/2411.12911) (2024), state that size 48 is the best
+previously known Sidon set in F_2^11 and that the APN-graph construction "is not an improvement as
+it is equal to the best previously known example." We independently re-derived it (graph of the
+Gold APN function x -> x^3 over GF(2^5), greedily extended) and verified it (all C(48,2) = 1128
+pairwise XORs distinct). It is kept here only as a verified reproduction. The upper bound is
+a(11) <= 62 (Brouwer–Tolhuizen). It is **not** submitted to OEIS as a contribution.
 
 ## License
 
