@@ -46,7 +46,8 @@ here, are:
 | max size | 1 | 2 | 3 | 4 | 6 | 8 | 11 |
 
 a(6) = 11 is proven optimal (the size-12 case is infeasible, shown by an integer-program search
-with hyperoctahedral symmetry breaking). `a(7) >= 14` is a search lower bound, not proven optimal.
+with hyperoctahedral symmetry breaking). `a(7) >= 15` and `a(8) >= 19` are search lower bounds
+(iterated local search), not proven optimal; both are verified B_3 sets (all 3-element sums distinct).
 `b3_search.py` is the search program (requires OR-Tools); `verify.py` needs only Python 3.
 
 ## `gf2-sidon-A394031/` — Sidon sets in GF(2)^n (mod-2)
