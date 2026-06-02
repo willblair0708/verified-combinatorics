@@ -1,0 +1,2 @@
+# Maximum B_3 set in {0,1}^0: size 1 (proven optimal, verified)
+()

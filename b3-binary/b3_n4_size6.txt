@@ -1,0 +1,7 @@
+# Maximum B_3 set in {0,1}^4: size 6 (proven optimal, verified)
+0000
+0010
+0011
+0110
+1010
+1101

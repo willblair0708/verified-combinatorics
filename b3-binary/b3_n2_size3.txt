@@ -1,0 +1,4 @@
+# Maximum B_3 set in {0,1}^2: size 3 (proven optimal, verified)
+01
+10
+11

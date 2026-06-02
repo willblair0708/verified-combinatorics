@@ -1,0 +1,9 @@
+# Maximum B_3 set in {0,1}^5: size 8 (proven optimal, verified)
+00001
+00110
+01000
+01101
+01110
+10100
+11000
+11011
