@@ -1,0 +1,17 @@
+# B_3 set in {0,1}^7 of size 14 (LOWER BOUND: a(7) >= 14; not proven optimal).
+# Proves a(7) >= 14 > 13, so this sequence DIVERGES from the Ulam numbers A002858
+# (whose first 7 terms 1,2,3,4,6,8,11 coincide with B_3 a(0..6)). Verified B_3: all 3-sums distinct.
+0000010
+0001000
+0001100
+0010101
+0011110
+0100111
+0110001
+0111011
+1000011
+1010010
+1011010
+1011101
+1110000
+1110110
