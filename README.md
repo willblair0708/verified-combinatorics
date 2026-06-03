@@ -21,6 +21,7 @@ lower bounds for [OEIS A309370](https://oeis.org/A309370), *Maximum size of a Si
 
 | n | size (lower bound) | prior recorded on OEIS |
 |---|--------------------|------------------------|
+| 10 | 66 | 63 |
 | 16 | 503 | 472 |
 | 17 | 712 | 662 |
 | 18 | 1010 | 864 |
@@ -33,6 +34,11 @@ These improve the lower bounds recorded on OEIS; they are not claimed to be opti
 exhaustively checked against unrecorded constructions in the literature. They are consistent
 with the page's conjecture `a(n) ~ 2^(n/2+1)` (each sits just below the corresponding power of
 two). Files for n=17, 21, 22 include an earlier, smaller set as well; the table uses the larger.
+
+The n=10 set (`sidon_n10_size66.txt`) was found by the Canopus loop (an Opus 4.8 proposer under an
+incremental kick-out local search, gated by an independent re-verification). It improves the bound
+recorded on OEIS A309370 (a(10) >= 63) to a(10) >= 66, and is the witness referenced by the
+corresponding A309370 comment.
 
 ## `b3-binary/` — binary B_3 sets
 
