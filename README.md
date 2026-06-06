@@ -22,26 +22,30 @@ lower bounds for [OEIS A309370](https://oeis.org/A309370), *Maximum size of a Si
 | n | size (lower bound) | prior recorded on OEIS |
 |---|--------------------|------------------------|
 | 8 | 33 | 32 |
-| 9 | 46 | 45 |
+| 9 | 47 | 45 |
 | 10 | 66 | 63 |
-| 16 | 503 | 472 |
+| 16 | 505 | 472 |
 | 17 | 712 | 662 |
 | 18 | 1010 | 864 |
-| 19 | 1397 | (none) |
-| 20 | 1941 | (none) |
+| 19 | 1435 | (none) |
+| 20 | 1989 | (none) |
 | 21 | 2694 | (none) |
 | 22 | 3770 | (none) |
+| 23 | 5179 | (none) |
+| 24 | 7179 | (none) |
 
 These improve the lower bounds recorded on OEIS; they are not claimed to be optimal, nor
 exhaustively checked against unrecorded constructions in the literature. They are consistent
 with the page's conjecture `a(n) ~ 2^(n/2+1)` (each sits just below the corresponding power of
-two). Files for n=17, 21, 22 include an earlier, smaller set as well; the table uses the larger.
+two). Several n include an earlier, smaller set as well (e.g. n=16 also has size 503, n=19 size
+1397, n=20 size 1941, n=9 size 46); the table always uses the larger, and every set listed is
+checked by `verify.py`.
 
-The n=8 and n=9 sets (`sidon_n8_size33.txt`, `sidon_n9_size46.txt`) come from an iterated local
-search and improve the recorded bounds a(8) >= 32 and a(9) >= 45 to 33 and 46. The n=10 set
-(`sidon_n10_size66.txt`) was found by the Canopus loop (an Opus 4.8 proposer under an incremental
-kick-out local search), improving a(10) >= 63 to 66. These three are the witnesses referenced by
-the corresponding A309370 comment; each is checkable in seconds by `verify.py`.
+The n=16/19/20 bounds (505, 1435, 1989) and the n=23/24 bounds (5179, 7179) come from the Canopus
+loop (an Opus 4.8 proposer under an incremental kick-out local search); the n=8/9/10 sets come
+from an iterated local search, improving a(8) >= 32, a(9) >= 45, a(10) >= 63 to 33, 47, 66. These
+are the witnesses referenced by the corresponding A309370 comments; each is checkable in seconds
+by `verify.py`.
 
 ## `b3-binary/` — binary B_3 sets
 
