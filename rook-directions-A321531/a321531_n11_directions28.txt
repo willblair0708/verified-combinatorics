@@ -1,0 +1,6 @@
+# A321531 a(11) = 28: max distinct directions among 11 non-attacking rooks on an 11x11 board.
+# Directions up to scaling and the dihedral action of the square = sorted(|dcol|,|drow|)/gcd.
+# Permutation (1-based: rook i is in row i, column perm[i]):
+1 10 3 11 8 6 7 9 4 5 2
+# This placement realizes 28 distinct direction classes; exhaustive search proves no placement
+# of 11 non-attacking rooks exceeds 28. Verified by verify.py.
