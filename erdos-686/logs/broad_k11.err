@@ -1,0 +1,5 @@
+k=11 d=500 done
+k=11 d=1000 done
+k=11 d=1500 done
+k=11 d=2000 done
+k=11 dmin=11 dmax=2000 xmax=1000000 hits=0
