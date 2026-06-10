@@ -19,7 +19,27 @@ Thue-type smallness of T1. The T1 box comes from: D ≠ 0 ⇒ |D| ≥ 2^{−κ�
 Gap 1 = improve the lower bound on |D| using the capture structure, for
 k³ ≤ n ≤ 2^κ·poly.
 
-## The new constraint (this session)
+## CORRECTION (added same night, after attempting the proof)
+
+Two discoveries from actually attacking the disjoint-split statement:
+
+1. **Sharing is forced, not optional** (good news): the equation gives
+   matched valuations `v_p(F(m)) = v_p(F(n))` for every odd prime
+   (`eq_four_matched_valuation`, already Lean-verified), so EVERY
+   captured prime of either block divides both blocks with equal
+   multiplicity. The "disjoint-split residual" below is vacuous for the
+   equation-relevant obstruction; the matched-valuation hypothesis is now
+   threaded into the Lean closure
+   (`no_eq_four_ge_five_..._pinned_matched`).
+2. **The D-congruence counting is vacuous** (bad news): D = Q(m) − 2Q(n)
+   lies in the ≤4 square-root residue classes mod p *automatically* —
+   the congruence is a consequence of F(m) ≡ F(n) ≡ 0 (mod p), not a
+   constraint. The "counting kill" claimed below does not exist. Gap 1
+   reverts to: bound |2^(κ+s)·D| from below (or handle D = 0
+   structurally), now WITH the knowledge that all captured primes are
+   shared. The original section is kept for the record.
+
+## The new constraint (this session — see CORRECTION above)
 
 Let p > 2k be a prime dividing an element of **both** blocks:
 p | n+j and p | m+j' (equivalently p | d+(j'−j), so p lives in the
