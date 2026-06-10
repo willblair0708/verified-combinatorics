@@ -56,6 +56,17 @@ equation with `u ∉ {0,±1,±2}` maps to such a point. Hence:
 ## Magma results (2026-06-09, run by Will via the online calculator)
 
 - `RankBounds(J) = 3 5`; torsion trivial.
+- **`MordellWeilGroupGenus2(J)`: J(ℚ) ≅ ℤ⁵, free, both certification
+  flags true — rank exactly 5, proven.** Remarkably rich for conductor
+  ~1.4·10⁹ (consistent with 34 small points). With `End(J) = ℤ` (RM test
+  negative) this rules out every Chabauty variant at the quotient level.
+- Surviving geometric route: Chabauty on the genus-6 cover `C` needs
+  `rank Jac(C) = 5 + rank(Prym) ≤ 5`, i.e. **Prym (dim 4) rank exactly 0**
+  — decided by `L(Prym, 1) ≠ 0`, with the Prym L-factors obtainable from
+  zeta functions of `C` over small `𝔽_p` (deg-12 numerator ÷ the C₂
+  quartic). The probe block is `prym_probe.magma`; if the octic factors
+  consistently, the Prym decomposes and its pieces can be attacked with
+  `RankBounds` directly.
 - The nontrivial lift confirmed in Magma's weighted coordinates:
   `(14 : −10740 : 11)` ↔ affine `(t, w) = (14/11, −10740/11³)`,
   `q = 121/9`, i.e. `P₅(5/3) = 4·P₅(2/3)`.
