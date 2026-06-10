@@ -53,6 +53,51 @@ equation with `u ∉ {0,±1,±2}` maps to such a point. Hence:
   `rank J(ℚ) ≥ 2`; analytic rank computation via PARI `lfungenus2` was
   started (slow at conductor ~1.4·10⁹; see logs).
 
+## Magma results (2026-06-09, run by Will via the online calculator)
+
+- `RankBounds(J) = 3 5`; torsion trivial.
+- The nontrivial lift confirmed in Magma's weighted coordinates:
+  `(14 : −10740 : 11)` ↔ affine `(t, w) = (14/11, −10740/11³)`,
+  `q = 121/9`, i.e. `P₅(5/3) = 4·P₅(2/3)`.
+
+Consequences: rank ≥ 3 > g = 2 kills classical Chabauty, and generic
+quadratic Chabauty needs `r ≤ g + ρ(Jac) − 1 = 2` unless the Néron–Severi
+rank ρ ≥ 2 (e.g. real multiplication — see RM test below). The
+`[3,5]` gap is likely 2-Selmer noise (Sha[2]); worth running
+`MordellWeilGroupGenus2(J)` / `RankBound(J : ...)` refinements to settle
+the exact rank.
+
+**RM test: negative** (PARI `hyperellcharpoly`, all good `p ≤ 200`): the
+squarefree kernels of `a_p² − 4(b_p − 2p)` vary (1, 53, 6, 30, 19, 5, …),
+so `End(J) = ℤ`, `ρ = 1`, and quadratic Chabauty is capped at rank 2 —
+**both Chabauty variants are unavailable on `C₂` at rank ≥ 3**.
+
+Remaining routes, in order of promise:
+1. **Settle the exact rank and get generators**: run in the Magma
+   calculator `MordellWeilGroupGenus2(J);` (Stoll's algorithm; use
+   `SetClassGroupBounds("GRH")` if it stalls). The `[3,5]` gap is likely
+   Sha[2]; exact generators are the prerequisite for everything below.
+2. **Attack the square-lift double cover directly**: the lifting locus is
+   `z² = q` on `C₂`, which IS the original genus-6 curve `C`; note the
+   identity `(w + 5(t³−4))(w − 5(t³−4)) = −16(t⁵−4)(t−4)` on `C₂`, so the
+   lift condition is equivalently `−2(t−4)(w − 5(t³−4)) = □`. Covering
+   collection: twists `δz² = −2(t−4)(w−5(t³−4))`, `δ` supported on
+   `{±1, 2, 3, 5, 139, 349}`; combine with a Mordell–Weil sieve once
+   generators are known. Note the only twist relevant to #686 is `δ = 1`,
+   whose cover is the original genus-6 curve `C` itself: Chabauty on `C`
+   needs `rank Jac(C) = rank Jac(C₂) + rank Prym ≤ 5`, i.e. Prym (dim 4)
+   rank ≤ 2 if the quotient rank is exactly 3 — testable numerically via
+   the L-function factorization `L(Jac C) = L(Jac C₂)·L(Prym)`.
+3. **Return to the pinned gcd-mass theorem** (uniform-k lane, see
+   `MIDDLE-RANGE.md`) — unaffected by this rank obstruction.
+
+Bottom line: the cell is now *specified* for specialists — explicit curve,
+conductor `3²·5⁵·139·349`, rank window `[3,5]`, trivial torsion, no RM,
+known points incl. the nontrivial `P₅(5/3) = 4·P₅(2/3)`, and the exact
+cover whose rational points decide #686's k=5 cell. This matches the
+pass-6 estimate ("months-scale with specialists") but replaces an
+amorphous task with a concrete one.
+
 ## What a specialist (or a Magma session) should run
 
 ```magma
