@@ -56,6 +56,16 @@ no admissible hit, i.e. none with `d ≥ k`):
 These are the first finite nontrivial regions ever swept for odd `k`
 (previous program state: odd `k ≥ 5` entirely open, no boxes).
 
+### 3b. k=5, N=4 → one genus-2 curve  [reduction proven]
+
+`CHABAUTY-K5.md` + `verify_chabauty_reduction.py`: the oddness of P₅ about
+its center collapses the genus-6 curve `P₅(m) = 4·P₅(n)` to the genus-2
+quotient `w² = 9t⁶ + 64t⁵ − 200t³ + 64t + 144` (conductor 3²·5⁵·139·349).
+Determining its rational points closes the cell. 34 points found to height
+10⁶; the only nontrivial lift is the rational identity
+`P₅(5/3) = 4·P₅(2/3)`. Next step: Magma `RankBounds` + (quadratic)
+Chabauty / Mordell–Weil sieve.
+
 ### 4. Middle range analysis
 
 `MIDDLE-RANGE.md`: gcd-mass lower bound, Euclidean/Dirichlet descent
