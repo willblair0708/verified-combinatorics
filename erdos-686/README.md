@@ -52,7 +52,7 @@ no admissible hit, i.e. none with `d ≥ k`):
 | 25 | 5,7,9,11,13 | ≤ 10^9 | **clean** (unconditional) |
 | 49 | 5,7,9,11,13 | ≤ 10^9 | **clean** (unconditional) |
 | 64 | 5,7,9,11,13 | ≤ 10^9 | **clean** (unconditional) |
-| 81 | 5,7,9 | ≤ 10^9 | **clean**; k=11,13 in flight |
+| 81 | 5,7,9,11,13 | ≤ 10^9 | **clean** (unconditional) |
 
 These are the first finite nontrivial regions ever swept for odd `k`
 (previous program state: odd `k ≥ 5` entirely open, no boxes).
