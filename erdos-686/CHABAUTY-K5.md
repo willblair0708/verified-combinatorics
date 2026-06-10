@@ -61,12 +61,30 @@ equation with `u ∉ {0,±1,±2}` maps to such a point. Hence:
   ~1.4·10⁹ (consistent with 34 small points). With `End(J) = ℤ` (RM test
   negative) this rules out every Chabauty variant at the quotient level.
 - Surviving geometric route: Chabauty on the genus-6 cover `C` needs
-  `rank Jac(C) = 5 + rank(Prym) ≤ 5`, i.e. **Prym (dim 4) rank exactly 0**
-  — decided by `L(Prym, 1) ≠ 0`, with the Prym L-factors obtainable from
-  zeta functions of `C` over small `𝔽_p` (deg-12 numerator ÷ the C₂
-  quartic). The probe block is `prym_probe.magma`; if the octic factors
-  consistently, the Prym decomposes and its pieces can be attacked with
-  `RankBounds` directly.
+  `rank Jac(C) = 5 + rank(Prym) ≤ 5`, i.e. **Prym (dim 4) rank exactly 0**.
+- **Prym probe result (Magma, 2026-06-09): the Prym is simple.** For
+  `p ∈ {7, 11, 13, 17, 19}` the deg-12 zeta numerator of `C/𝔽_p` factors
+  as (the `C₂` quartic — traces −8, −5, −8, −14, −4, matching the PARI
+  Euler data exactly) × an octic **irreducible over ℚ** in every case.
+  Prym Frobenius traces: −10, −8, −8, −6, −10 at p = 7, 11, 13, 17, 19.
+  No decomposition ⇒ no `RankBounds` shortcut; the Prym rank is only
+  reachable via (i) its L-value at the center (dim-4 motive, conductor
+  `cond(Jac C)/1364371875`, likely far beyond current analytic software),
+  or (ii) descent machinery for simple 4-dim abelian varieties, which
+  does not currently exist in usable form.
+
+### Geometric-lane verdict
+
+The cell is fully specified but genuinely hard by current technology:
+`C₂` has `J(ℚ) = ℤ⁵` (proven), `End = ℤ`, no Chabauty at the quotient;
+the cover route hinges on the rank of a simple 4-dim Prym, out of reach
+of available software; and any eventual method must "see" the nontrivial
+rational point `P₅(5/3) = 4·P₅(2/3)`. This is a strong invitation for the
+Balakrishnan–Bruin–Stoll school (genus-6 plane-quintic Chabauty with one
+differential *if* Prym rank 0, else MW-sieve with the ℤ⁵ generators), and
+a clean problem statement to circulate. Meanwhile the **pinned gcd-mass
+lane** (`MIDDLE-RANGE.md`, `Erdos686Tail.lean`) is unaffected and remains
+the primary route to the uniform theorem.
 - The nontrivial lift confirmed in Magma's weighted coordinates:
   `(14 : −10740 : 11)` ↔ affine `(t, w) = (14/11, −10740/11³)`,
   `q = 121/9`, i.e. `P₅(5/3) = 4·P₅(2/3)`.
