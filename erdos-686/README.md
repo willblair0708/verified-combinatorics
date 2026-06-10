@@ -48,10 +48,11 @@ no admissible hit, i.e. none with `d ≥ k`):
 
 | N | k | d range | result |
 |---|---|---------|--------|
-| 4 | 5 | ≤ 10^10 | **clean** (0 hits, unconditional) |
-| 4 | 7,9,11,13 | ≤ 10^10 | in flight — logs/eq_k*_N4.err |
-| 25 | 5,7,9,11 | ≤ 10^9 | **clean** (0 hits, unconditional) |
-| 25 | 13 / 49,64,81 all | ≤ 10^9 | in flight — logs/eq_k*_N*.err |
+| 4 | 5,7,9,11,13 | ≤ 10^10 | **clean** (unconditional; only the known d=1 telescope at k=9) |
+| 25 | 5,7,9,11,13 | ≤ 10^9 | **clean** (unconditional) |
+| 49 | 5,7,9,11,13 | ≤ 10^9 | **clean** (unconditional) |
+| 64 | 5,7,9,11,13 | ≤ 10^9 | **clean** (unconditional) |
+| 81 | 5,7,9 | ≤ 10^9 | **clean**; k=11,13 in flight |
 
 These are the first finite nontrivial regions ever swept for odd `k`
 (previous program state: odd `k ≥ 5` entirely open, no boxes).
