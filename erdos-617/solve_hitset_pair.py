@@ -33,7 +33,7 @@ Note tau_4 <= 4 is implied by the Case conditions (P itself is a hitting
 4-set), so (L7) reduces to tau_4 >= 4.
 """
 import itertools, json, sys, time
-from pysat.card import CardEnc, EncType
+from pysat.card import CardEnc, EncType, ITotalizer
 from pysat.formula import IDPool
 from pysat.solvers import Cadical195
 
@@ -130,6 +130,46 @@ class Instance:
             self._clause([self.pool.id(('i4', S4))
                           for S4 in itertools.combinations(
                               [v for v in VS if v not in hs], 4)])
+        # Symmetry breaking (sound): every constraint family here — and
+        # every lazy clause added later — is implied by the spec for all
+        # graphs, and the spec itself is invariant under permutations
+        # fixing P and Q setwise.  The interchangeable classes are P&Q,
+        # P-Q, Q-P and the rest.  For each adjacent pair u<w inside a
+        # class we require A[u] <=_lex A[w] over the common columns
+        # (lex-leader w.r.t. adjacent transpositions): every orbit of
+        # spec-models keeps at least one representative.
+        classes = [sorted(self.P & self.Q), sorted(self.P - self.Q),
+                   sorted(self.Q - self.P),
+                   sorted(set(VS) - self.P - self.Q)]
+        for cls in classes:
+            for (u, w) in zip(cls, cls[1:]):
+                cols = [t for t in VS if t != u and t != w]
+                # e_i: rows equal on the first i+1 columns
+                prev = None
+                for i, t in enumerate(cols):
+                    xu, xw = self.ev(u, t), self.ev(w, t)
+                    if prev is None:
+                        self._clause([-xu, xw])  # first col: u<=w
+                        e = self.pool.id(('lex', u, w, i))
+                        # e0 <- (xu = xw)
+                        self._clause([xu, xw, e])
+                        self._clause([-xu, -xw, e])
+                        # e0 -> (xu = xw)
+                        self._clause([-e, xu, -xw])
+                        self._clause([-e, -xu, xw])
+                    else:
+                        self._clause([-prev, -xu, xw])  # equal so far: u<=w
+                        if i == len(cols) - 1:
+                            break  # no need for the last equality var
+                        e = self.pool.id(('lex', u, w, i))
+                        # e <- prev & (xu = xw)
+                        self._clause([-prev, xu, xw, e])
+                        self._clause([-prev, -xu, -xw, e])
+                        # e -> prev & (xu = xw)
+                        self._clause([-e, prev])
+                        self._clause([-e, xu, -xw])
+                        self._clause([-e, -xu, xw])
+                    prev = e
         # lazy-constraint bookkeeping
         self.sixsets_added = set()
         self.sat_edges_added = set()
