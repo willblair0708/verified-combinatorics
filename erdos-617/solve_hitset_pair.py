@@ -99,11 +99,18 @@ class Instance:
             self._card(litsQ, 31, atleast=True)   # Lemma 3
         # (L5) eager K5-saturation of ~B: for every pair u<v, if uv is a
         # B-edge there is a 3-set T with all 9 pairs of (T u {u,v}) \ {uv}
-        # non-edges of B.
+        # non-edges of B.  Sound T-range restriction: any valid T makes
+        # T u {u} and T u {v} independent 4-sets, which P and Q must hit;
+        # hence T meets P unless u,v are both in P, and likewise for Q.
         for (u, v) in PAIRS:
             others = [w for w in VS if w != u and w != v]
+            needP = not (u in self.P and v in self.P)
+            needQ = not (u in self.Q and v in self.Q)
             disj = [-self.ev(u, v)]
             for T in itertools.combinations(others, 3):
+                ts = set(T)
+                if (needP and not ts & self.P) or (needQ and not ts & self.Q):
+                    continue
                 t = self.pool.id(('sat', u, v, T))
                 disj.append(t)
                 for (a, b) in pairs_in(T):

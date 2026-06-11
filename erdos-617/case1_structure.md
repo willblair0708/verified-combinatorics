@@ -39,3 +39,18 @@ e(B)=40 yields  r ≥ 18 + z,  a+x+z ≤ 9,  b+y+z ≤ 13.
 These were checked numerically and are consistent with everything the SAT
 solver explores; they are not by themselves a refutation — the full spec
 (saturation, non-4-partiteness, τ₄ ≥ 4) is decided by the SAT run.
+
+## Saturation–hitting interaction (both cases)
+
+K₅-saturation of the complement says: for every B-edge uv there is a 3-set
+T, independent and with no edges to u or v.  Then T∪{u} and T∪{v} are
+*independent 4-sets*, so P and Q must hit both.  For an edge uv with
+u,v ∉ P∪Q (in Case I at least r ≥ 20 of the 40 edges lie inside R), T
+itself must meet **both** P and Q.  So every R-edge uv admits p ∈ P,
+q ∈ Q with: pq a non-edge, and p,q both non-adjacent to both u,v.
+With e(P,R) ≤ 9 and e(Q,R) ≤ 13 (budget corollary) this is a strong
+simultaneous non-adjacency demand against α(B) ≤ 4 density pressure —
+this is exactly the regime the SAT solver decides.
+
+Note z ≤ r − 18 (from Lemmas 1–2 plus the budget), so e(P,Q) ≤ 12−...
+in the typical r=20..22 range, e(P,Q) ≤ 2..4.

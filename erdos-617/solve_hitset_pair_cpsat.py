@@ -53,18 +53,25 @@ def build(case_name, P, Q, hit3, ePmax, eQmax):
         m.Add(sum(ev(a, b) for (a, b) in pairs_in(P)) <= ePmax)
     if eQmax is not None:
         m.Add(sum(ev(a, b) for (a, b) in pairs_in(Q)) <= eQmax)
-    # L5 saturation of ~B, eager
+    # L5 saturation of ~B, eager.  Sound T-range restriction: any valid T
+    # makes T u {u} and T u {v} independent 4-sets, which P and Q must hit;
+    # hence T meets P unless u,v both lie in P, likewise for Q.
+    sP, sQ = set(P), set(Q)
     for (u, v) in PAIRS:
         others = [w for w in VS if w != u and w != v]
+        needP = not (u in sP and v in sP)
+        needQ = not (u in sQ and v in sQ)
         ts = []
         for T in itertools.combinations(others, 3):
+            tset = set(T)
+            if (needP and not tset & sP) or (needQ and not tset & sQ):
+                continue
             t = m.NewBoolVar(f's{u}_{v}_{T[0]}_{T[1]}_{T[2]}')
             ts.append(t)
-            for (a, b) in pairs_in(T):
-                m.AddImplication(t, ev(a, b).Not())
-            for w in T:
-                m.AddImplication(t, ev(u, w).Not())
-                m.AddImplication(t, ev(v, w).Not())
+            lits = [ev(a, b).Not() for (a, b) in pairs_in(T)]
+            lits += [ev(u, w).Not() for w in T]
+            lits += [ev(v, w).Not() for w in T]
+            m.AddBoolAnd(lits).OnlyEnforceIf(t)
         m.AddBoolOr([ev(u, v).Not()] + ts)
     # structural cuts implied by the spec (case1_structure.md /
     # case2_structure.md): Turan-stability lower bounds
