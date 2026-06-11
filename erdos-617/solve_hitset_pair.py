@@ -95,8 +95,8 @@ class Instance:
             self._card([self.ev(i, j) for (i, j) in pairs_in(R)], 20,
                        atleast=True)              # Turan, alpha(R)<=2
         else:     # Case II: |B-P|=|B-Q|=15
-            self._card(litsP, 30, atleast=True)   # Turan, alpha<=3 on 15
-            self._card(litsQ, 30, atleast=True)
+            self._card(litsP, 31, atleast=True)   # Lemma 3
+            self._card(litsQ, 31, atleast=True)   # Lemma 3
         # (L5) eager K5-saturation of ~B: for every pair u<v, if uv is a
         # B-edge there is a 3-set T with all 9 pairs of (T u {u,v}) \ {uv}
         # non-edges of B.
