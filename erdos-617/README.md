@@ -33,6 +33,31 @@ problem itself) are verifiable from the code and certificates in
 Erdős #617 itself remains **open** in both directions; nothing here claims a
 full solution.
 
+## RESULT
+
+**The finite problem is UNSAT in all six cases** (Case I; Case II for
+k = 0..4): no 19-vertex graph B with the required properties exists.
+
+* 24/24 CDCL runs UNSAT (CaDiCaL via PySAT), including ablations that
+  remove the hand-proved lemma cuts and the saturation T-restriction, and
+  a "pure spec" variant whose trust base is only the direct constraint
+  encoding + lex-leader symmetry breaking.
+* DRAT proofs produced by Glucose 4.2 (an independent second solver) and
+  machine-verified by drat-trim.
+* OR-Tools CP-SAT (a third engine, different encoding and symmetry
+  handling) independently returns INFEASIBLE on the cases checked.
+* Encoder semantics validated end-to-end against independently written
+  checking code; the relaxed instance (cap removed) is SAT and reproduces
+  the pass-20 near-miss family, so the encoding is not vacuously strong.
+
+**Conditional corollary** (assuming the *unverified* imported pass-1..20
+reductions, see `NOTES.md` §2): every colour class of a balanced
+5-colouring of K₂₆ has ≥ 62 edges.  **Erdős #617 itself remains open.**
+
+See `NOTES.md` §5 for the full verdict matrix and trust-base discussion;
+`case1_structure.md` / `case2_structure.md` for the new unconditional
+structural lemmas (Turán-stability) proved along the way.
+
 ## Files
 
 | file | purpose |
