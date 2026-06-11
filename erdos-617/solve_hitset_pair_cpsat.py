@@ -85,6 +85,17 @@ def build(case_name, P, Q, hit3, ePmax, eQmax):
     else:     # Case II
         m.Add(sum(ev(a, b) for (a, b) in pairs_in(notP)) >= 31)  # Lemma 3
         m.Add(sum(ev(a, b) for (a, b) in pairs_in(notQ)) >= 31)  # Lemma 3
+    # Symmetry breaking: all constraints are invariant under permuting
+    # vertices within P, within Q\P, and within the rest; every orbit has a
+    # representative with non-decreasing degrees inside each class, so
+    # requiring that is sound.
+    classes = [sorted(set(P) & set(Q)), sorted(set(P) - set(Q)),
+               sorted(set(Q) - set(P)),
+               sorted(v for v in VS if v not in P and v not in Q)]
+    for cls in classes:
+        for (u, w) in zip(cls, cls[1:]):
+            m.Add(sum(ev(u, t) for t in VS if t != u)
+                  <= sum(ev(w, t) for t in VS if t != w))
     # L7 lower half: tau4 >= 4 via aux independence indicators
     i4 = {}
     for S4 in itertools.combinations(VS, 4):
