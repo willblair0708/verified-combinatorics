@@ -80,30 +80,59 @@ Case II the sub-cases k = |P∩Q| = 0..4 are exhaustive.
   T∪{u}, T∪{v} are independent 4-sets which P,Q must hit.  Used to shrink
   the saturation gadgets ~3x in both solvers, soundly.
 
-## 5. Results and run status
+## 5. RESULTS — the hitset-pair finite problem is UNSAT in all cases
 
-Diagnostics established by quick solver probes (artifacts/solve_log*.txt):
+**Theorem (computational; conditional only on the encoding arguments in
+§3–§4b, all of which are written out and independently re-derived here).**
+There is **no** graph B on 19 vertices satisfying the section-6 spec —
+in Case I or in any Case II sub-case k = 0..4.
 
-* The **encoder is sound and not vacuous**: with the single cap e_B(Q) ≤ 6
-  removed, Case I (including e(B)=40, both hitting conditions, hit3,
-  K₅-saturation, τ₄ ≥ 4, Δ ≤ 6, α ≤ 4) is SAT in < 0.1 s, and the model
-  found is exactly the pass-20 "near-miss" family: P = K₄, Q = K₅,
-  e(R) = 24 with α(R) ≤ 2, and **zero** P–Q, P–R, Q–R edges.
-* The 4-clique control graph K₄⊔3K₅ is correctly rejected (e=36 ≠ 40) and
-  `check_witness.py` reports exactly the expected pass/fail pattern on it.
-* In Case II.k0 the caps e_B(P), e_B(Q) ≤ 6 are vacuous (max is C(4,2)=6),
-  so that case is purely: two disjoint 4-sets each hitting every
-  independent 4-set, under L1–L7.  Lemma 3 kills the natural 3K₅
-  constructions for it.
-* v1 CEGAR runs (lazy saturation) found relaxation models freely with the
-  cap in place — so {core + cap} is SAT and **K₅-saturation is the
-  binding constraint** in Case I; the hard search is the interaction
-  "Q sparse" × "Q hits all independent 4-sets" × "complement saturated".
+**Conditional corollary** (additionally assuming the imported pass-1..20
+claims of §2, which are NOT verified in this repository): in any balanced
+5-colouring of K₂₆, every colour class has at least **62** edges; the
+61-edge colour-class boundary is closed.
 
-Verdict status at the time of this commit: Case I and Case II.k0 running
-on two independent engines (CaDiCaL 1.9.5 incremental CEGAR; CP-SAT with
-eager L4 + degree-sorted symmetry breaking); Case II.k1–k4 queued.
-No case has yet returned UNSAT or a witness.  Any UNSAT verdict will be
-re-certified from the dumped CNF via Glucose 4.2 DRAT + drat-trim
-(`certify_unsat.py`, pipeline validated on PHP(4,3)); any witness will be
-re-verified by `check_witness.py`.
+Erdős #617 itself remains open: this closes one control point of one
+route.  It is neither a proof that balanced colourings of K₂₆ do not
+exist, nor a counterexample.
+
+### Verdict matrix
+
+Four encoding variants per case (main = Lemma cuts + restricted-T;
+ablations remove the hand-proved lemmas and/or the T-restriction; *pure* =
+neither, i.e. the minimal trust base: direct spec constraints + lex-leader
+symmetry breaking only).  All 24 CDCL runs returned UNSAT on the first
+solver call — the lazy constraint families (6-set bounds, 4-partiteness)
+were never needed.
+
+Run `python3 collect_results.py` for the generated table with timings.
+Summary: **24/24 CDCL UNSAT** (CaDiCaL 1.9.5), CP-SAT cross-checks
+INFEASIBLE on every case checked, DRAT certificates produced by Glucose
+4.2 and verified by drat-trim for the main CNFs.
+
+### Trust base for the UNSAT claim
+
+1. The constraint-to-CNF encoding (`solve_hitset_pair.py`), validated
+   end-to-end: a model of the relaxed instance (cap removed) produced
+   under the exact production encoding passes every spec condition under
+   independently written semantics (including unrestricted saturation).
+2. Lex-leader symmetry breaking over adjacent transpositions within the
+   interchangeable vertex classes (textbook-sound; bubble-sort argument;
+   regression-tested to preserve satisfiability of the relaxed instance).
+3. The solvers, cross-checked three ways: CaDiCaL (via PySAT), Glucose
+   4.2 with DRAT proof logging, drat-trim proof verification, and
+   OR-Tools CP-SAT with a *different* encoding (native linear
+   cardinalities, eager 6-set bounds, degree-sort instead of lex).
+4. The hand-proved Lemmas 1–3 and the restricted-T argument are NOT in
+   the trust base: the ablation and pure runs are UNSAT without them.
+
+### Diagnostics that locate the contradiction
+
+* Relaxing only e_B(Q) ≤ 6 in Case I makes the instance SAT instantly
+  (the model is the pass-20 near-miss family: P=K₄, Q=K₅, dense R, no
+  cross edges).  The cap is the heart of Case I.
+* In Case II.k0 the caps are vacuous; infeasibility there is purely
+  "two disjoint hitting 4-sets cannot coexist" under L1–L3, L5, τ₄ ≥ 4.
+* K₅-saturation of the complement is the binding global constraint: the
+  v1 lazy runs (saturation enforced only by counterexample) freely found
+  models satisfying everything else.

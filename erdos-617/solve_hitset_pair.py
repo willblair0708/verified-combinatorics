@@ -47,8 +47,10 @@ def pairs_in(S):
 
 
 class Instance:
-    def __init__(self, name, P, Q, hit3=False, ePmax=None, eQmax=None):
+    def __init__(self, name, P, Q, hit3=False, ePmax=None, eQmax=None,
+                 use_cuts=True, restrict_T=True):
         self.name, self.P, self.Q = name, set(P), set(Q)
+        self.use_cuts, self.restrict_T = use_cuts, restrict_T
         self.pool = IDPool()
         self.evars = {}
         for (i, j) in PAIRS:
@@ -88,7 +90,9 @@ class Instance:
         notQ = [v for v in VS if v not in self.Q]
         litsP = [self.ev(i, j) for (i, j) in pairs_in(notP)]   # edges of B-P
         litsQ = [self.ev(i, j) for (i, j) in pairs_in(notQ)]   # edges of B-Q
-        if hit3:  # Case I: |B-P|=15, |B-Q|=14, |R|=10
+        if not use_cuts:
+            pass
+        elif hit3:  # Case I: |B-P|=15, |B-Q|=14, |R|=10
             self._card(litsP, 31, atleast=True)   # Lemma 1
             self._card(litsQ, 27, atleast=True)   # Lemma 2
             R = [v for v in VS if v not in self.P and v not in self.Q]
@@ -104,8 +108,8 @@ class Instance:
         # hence T meets P unless u,v are both in P, and likewise for Q.
         for (u, v) in PAIRS:
             others = [w for w in VS if w != u and w != v]
-            needP = not (u in self.P and v in self.P)
-            needQ = not (u in self.Q and v in self.Q)
+            needP = restrict_T and not (u in self.P and v in self.P)
+            needQ = restrict_T and not (u in self.Q and v in self.Q)
             disj = [-self.ev(u, v)]
             for T in itertools.combinations(others, 3):
                 ts = set(T)
@@ -329,11 +333,14 @@ def four_clique_cover(adj):
     return [list(p) for p in parts] if bt(0) else None
 
 
-def run_case(name, P, Q, hit3, ePmax, eQmax, log):
+def run_case(name, P, Q, hit3, ePmax, eQmax, log, use_cuts=True,
+             restrict_T=True):
     t0 = time.time()
-    inst = Instance(name, P, Q, hit3=hit3, ePmax=ePmax, eQmax=eQmax)
+    inst = Instance(name, P, Q, hit3=hit3, ePmax=ePmax, eQmax=eQmax,
+                    use_cuts=use_cuts, restrict_T=restrict_T)
     log(f"[{name}] P={sorted(P)} Q={sorted(Q)} hit3={hit3} "
-        f"ePmax={ePmax} eQmax={eQmax} core_clauses={inst.nclauses}")
+        f"ePmax={ePmax} eQmax={eQmax} cuts={use_cuts} rT={restrict_T} "
+        f"core_clauses={inst.nclauses}")
     it = 0
     while True:
         it += 1
@@ -343,8 +350,10 @@ def run_case(name, P, Q, hit3, ePmax, eQmax, log):
                 f"(lazy: six={len(inst.sixsets_added)} "
                 f"sat={len(inst.sat_edges_added)} "
                 f"tau4={len(inst.tau4_hitsets_added)} cover={inst.cover_blocks})")
-            inst.dump_dimacs(f'artifacts/final_{name}.cnf')
-            log(f"[{name}] final CNF dumped to artifacts/final_{name}.cnf")
+            tag = ('' if use_cuts else '_nocuts') + \
+                  ('' if restrict_T else '_fullT')
+            inst.dump_dimacs(f'artifacts/final_{name}{tag}.cnf')
+            log(f"[{name}] final CNF dumped to artifacts/final_{name}{tag}.cnf")
             return ('UNSAT', None, inst)
         adj, E = inst.model_graph()
         a = inst.lazy_sixsets(adj)
@@ -370,6 +379,9 @@ def main():
 
     results = {}
     only = sys.argv[1] if len(sys.argv) > 1 else None
+    use_cuts = 'nocuts' not in sys.argv
+    restrict_T = 'fullT' not in sys.argv
+    suffix = ('' if use_cuts else '_nocuts') + ('' if restrict_T else '_fullT')
 
     cases = []
     # Case I: P,Q disjoint, |P|=4,|Q|=5, hit3 over the remaining 10, e(Q)<=6
@@ -382,10 +394,13 @@ def main():
     for (name, P, Q, hit3, ePmax, eQmax) in cases:
         if only and name != only:
             continue
-        verdict, witness, inst = run_case(name, P, Q, hit3, ePmax, eQmax, log)
+        verdict, witness, inst = run_case(name, P, Q, hit3, ePmax, eQmax, log,
+                                          use_cuts=use_cuts,
+                                          restrict_T=restrict_T)
         results[name] = {'verdict': verdict, 'witness': witness,
-                         'P': sorted(P), 'Q': sorted(Q)}
-        with open(f'artifacts/result_{name}.json', 'w') as f:
+                         'P': sorted(P), 'Q': sorted(Q),
+                         'use_cuts': use_cuts, 'restrict_T': restrict_T}
+        with open(f'artifacts/result_{name}{suffix}.json', 'w') as f:
             json.dump(results[name], f, indent=1)
     log(f"SUMMARY {json.dumps({k: v['verdict'] for k, v in results.items()})}")
 
