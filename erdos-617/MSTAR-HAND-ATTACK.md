@@ -191,3 +191,21 @@ q = 6 adds the size vector (7,5,5,5,4) (7-part carrying all I = 6, every
 skeleton (stability → forced shapes → budgets → covering) applies
 throughout; the open question is whether the slack survives the loosened
 budgets.  q = 6 re-derives the imported pass-ladder 62 *unconditionally*.
+
+**Foothold notes for (7,5,5,5,4)** (2026-06-12, groundwork): write Q for
+the 4-part, P₇ for the 7-part (e(P₇) ≥ 6 forced).
+(a) *Q has PAIR-budgets*: for outside vertices w, w′ the 6-set
+{w, w′} ∪ Q gives e(Q) + deg_Q(w) + deg_Q(w′) + [ww′ ∈ H] ≥ 4; with
+e(Q) = 0, joint holes into Q are ≤ 4 + [ww′].  So at most one vertex in
+the graph has ≥ 3 Q-holes, and any two with 2 each must be H-adjacent.
+(b) *The adversary's refuge is Q-side blocking*: for uv ⊆ P₇, Lemma G
+still forces present triangles across the three empty 5-parts, but the
+K₆ needs a fourth vertex in U_Q adjacent to the triangle — each q ∈ U_Q
+dodges a given triangle with one budget-1 hole into a 5-part, shrinking
+the grid to (2,2,2), which IS blockable (min 6).  Lemma E does not
+transfer; the demand must charge (i) q-side dodging holes, (ii) residual
+(2,2,2)-grid blocking at ~6 β-holes, (iii) P₇-internal spread (6 edges
+on 7 vertices with every 6-subset ≥ 4 ⟹ ≥ 5 vertices spanned).
+(c) *Target*: at q = 6 this vector has cross-pairs 268, so holes ≤
+268 + 6 − 263 = 11; the (i)+(ii)+(iii) accounting must beat 11, with the
+pair-budget lattice (a) making Q-spends expensive at scale.
