@@ -115,12 +115,39 @@ CP-SAT minimise has m\* ≤ 90 (verified witness), and the certified ladder
 (published; statement verified verbatim against ar5iv 2026-06-12; we do
 NOT need the weaker 3t edit-distance corollary).
 
-## Next rungs (active): q ≤ 10 (target m\* ≥ 66 = the r=5 proof)
+## Rung q = 5 (m\* ≥ 61) — Case A closed, Case B open
 
-For e(H) ≥ 260, t = q ≤ 10: I ≤ 10 admits richer partitions (two 6-parts
-iff I ≥ 8; one 5-part may carry ≤ 6 internal edges, loosening Foothold-1
-budgets to 1 + e(P)).  The same four steps go through with a finite case
-tree over (size vector, I-distribution); the blocking bound becomes
-min|Uᵢ||Uⱼ| with |Uᵢ| ≥ 5 − (2 + e(Pᵢ))-type budgets, against
-holes ≤ 10 + I.  First targets: q = 5, 6 (m\* ≥ 61, 62 — the latter
-re-derives the imported pass-ladder bound *unconditionally*).
+Setup: e(H) ≥ 265 ⟹ Füredi I ≤ 5; 7-parts need ≥ 6 > 5 internal and two
+6-parts need 8 > 5, so the partition is again (6,5,5,5,5) with
+e(P₀) = 4, I₅ := I − 4 ≤ 1, and holes ≤ 270 + I − e(H) ≤ 10.
+
+**Case A (I₅ = 0): CLOSED.**  All 5-parts empty, so u, v spend
+sᵢ ∈ {0,1,2} holes into Pᵢ and |Uᵢ| = 5 − sᵢ.  Total holes ≥
+Σsᵢ + min_{i<j}(5−sᵢ)(5−sⱼ); minimising over all (sᵢ) ∈ {0,1,2}⁴ gives
+**13**, attained at (2,2,0,0) → 4 + 3·3.  13 > 10. ∎
+(The same table gives 13 > 12 = the q = 6 budget, so Case A is closed
+through q = 6 as well; it fails first at q = 7 where holes ≤ 14.)
+
+**Case B (I₅ = 1, edge xy in a 5-part P₁): OPEN — the active front.**
+Structure established so far: budgets loosen only toward P₁
+(≤ 2 holes/vertex) and toward P₀ (config-dependent: for z′ ∈ P₀ of
+P₀-degree d, any outside vertex w has ≥ d neighbours in P₀ − z′).  The
+edge xy carries its own blocking system over transversals
+P₀ × P₂ × P₃ × P₄; writing Wᵢ(z) = Pᵢ ∩ N(x) ∩ N(y) ∩ N(z) for z ∈ P₀
+common to x, y, the empty-part budgets give |Wᵢ(z)| ≥ 2, so each
+unblocked z needs ≥ min|Wᵢ||Wⱼ| ≥ 4 between-5-part holes in its W-sets
+(shareable across z).  The uv-system alone reaches only ≥ 9 here (the
+adversary spends s₁ = 4 into the loosened P₁), so the contradiction must
+charge the xy-system against the remaining budget — target: total ≥ 11
+> 10.  Next step: hole-allocation minimisation with both systems and
+P₀-configuration cases (star vs path vs matching+P₃ degree sequences);
+a small exhaustive allocation check is the planned proof-discovery aid,
+with the clean argument extracted afterwards.
+
+## Rungs q = 6..10 (toward 66 = the r=5 proof)
+
+q = 6 adds the size vector (7,5,5,5,4) (7-part carrying all I = 6, every
+6-subset of it spanning ≥ 4); q ≥ 8 adds two-6-part vectors.  The
+skeleton (stability → forced shapes → budgets → covering) applies
+throughout; the open question is whether the slack survives the loosened
+budgets.  q = 6 re-derives the imported pass-ladder 62 *unconditionally*.
