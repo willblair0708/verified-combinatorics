@@ -1,0 +1,52 @@
+=== z23-1 ===
+10010 six-set classes; min distinct orbits in a class: 5
+status: INFEASIBLE
+UNSAT: no z23-1-invariant balanced 5-colouring of K_26 exists
+=== z19-1 ===
+12124 six-set classes; min distinct orbits in a class: 5
+status: INFEASIBLE
+UNSAT: no z19-1-invariant balanced 5-colouring of K_26 exists
+=== z17-1 ===
+13622 six-set classes; min distinct orbits in a class: 5
+status: INFEASIBLE
+UNSAT: no z17-1-invariant balanced 5-colouring of K_26 exists
+=== z13-1 ===
+19294 six-set classes; min distinct orbits in a class: 5
+status: INFEASIBLE
+UNSAT: no z13-1-invariant balanced 5-colouring of K_26 exists
+=== z11-2 ===
+20930 six-set classes; min distinct orbits in a class: 5
+status: INFEASIBLE
+UNSAT: no z11-2-invariant balanced 5-colouring of K_26 exists
+=== z11-1 ===
+25480 six-set classes; min distinct orbits in a class: 5
+status: INFEASIBLE
+UNSAT: no z11-1-invariant balanced 5-colouring of K_26 exists
+=== z7-3 ===
+32890 six-set classes; min distinct orbits in a class: 3
+status: INFEASIBLE
+UNSAT: no z7-3-invariant balanced 5-colouring of K_26 exists
+=== z7-2 ===
+33682 six-set classes; min distinct orbits in a class: 3
+status: INFEASIBLE
+UNSAT: no z7-2-invariant balanced 5-colouring of K_26 exists
+=== z5-4 ===
+46066 six-set classes; min distinct orbits in a class: 3
+status: INFEASIBLE
+UNSAT: no z5-4-invariant balanced 5-colouring of K_26 exists
+=== z5-3 ===
+46442 six-set classes; min distinct orbits in a class: 3
+status: INFEASIBLE
+UNSAT: no z5-3-invariant balanced 5-colouring of K_26 exists
+=== z3-7 ===
+76804 six-set classes; min distinct orbits in a class: 5
+status: INFEASIBLE
+UNSAT: no z3-7-invariant balanced 5-colouring of K_26 exists
+=== z3-6 ===
+76996 six-set classes; min distinct orbits in a class: 5
+status: INFEASIBLE
+UNSAT: no z3-6-invariant balanced 5-colouring of K_26 exists
+=== z2-13 ===
+115258 six-set classes; min distinct orbits in a class: 9
+status: UNKNOWN
+UNDECIDED within time limit

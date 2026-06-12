@@ -1,0 +1,5 @@
+17710 rotation classes of 6-sets; min distinct orbits in a 6-set: 5
+status: INFEASIBLE
+UNSAT: no Z_13-invariant balanced 5-colouring of K_26 exists
+1151150 coverage clauses built in 2.2s; solving...
+UNSAT: confirmed — no Z_13-invariant balanced 5-colouring of K_26

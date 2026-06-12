@@ -1,0 +1,4 @@
+z3: <g> order 3, 109 edge orbits (sizes [1, 3])
+76762 six-set classes; min distinct orbits in a class: 5
+status: INFEASIBLE
+UNSAT: no z3-invariant balanced 5-colouring of K_26 exists

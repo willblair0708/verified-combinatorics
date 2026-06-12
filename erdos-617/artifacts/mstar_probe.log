@@ -1,0 +1,17 @@
+model built: 230230 six-sets, 325 edge vars, 3.1s
+[   164.3s] incumbent e=122  bound=55  -> artifacts/mstar_witness_E122.txt
+[   164.4s] incumbent e=121  bound=55  -> artifacts/mstar_witness_E121.txt
+[   164.6s] incumbent e=120  bound=55  -> artifacts/mstar_witness_E120.txt
+[   165.9s] incumbent e=119  bound=55  -> artifacts/mstar_witness_E119.txt
+[   170.6s] incumbent e=118  bound=55  -> artifacts/mstar_witness_E118.txt
+[   176.8s] incumbent e=117  bound=55  -> artifacts/mstar_witness_E117.txt
+[   268.8s] incumbent e=116  bound=55  -> artifacts/mstar_witness_E116.txt
+[   371.2s] incumbent e=115  bound=55  -> artifacts/mstar_witness_E115.txt
+[   382.5s] incumbent e=114  bound=55  -> artifacts/mstar_witness_E114.txt
+[   398.0s] incumbent e=112  bound=55  -> artifacts/mstar_witness_E112.txt
+[   407.4s] incumbent e=110  bound=55  -> artifacts/mstar_witness_E110.txt
+[   408.7s] incumbent e=109  bound=55  -> artifacts/mstar_witness_E109.txt
+[   411.4s] incumbent e=105  bound=55  -> artifacts/mstar_witness_E105.txt
+[   414.4s] incumbent e=103  bound=55  -> artifacts/mstar_witness_E103.txt
+[   418.4s] incumbent e=100  bound=55  -> artifacts/mstar_witness_E100.txt
+[   423.5s] incumbent e=98  bound=55  -> artifacts/mstar_witness_E98.txt
