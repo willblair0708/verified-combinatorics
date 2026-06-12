@@ -41,7 +41,8 @@ proof of #617 r = 5.
   form): incumbents 122 → **98**, still descending at kill time
   (`artifacts/mstar_witness_E98.txt`, independently VERIFIED: m\* ≤ 98);
   internal lower bound parked at the Turán cut 55.  Minimise relaunched at
-  cloud scale alongside the decision runs.
+  cloud scale alongside the decision runs; current verified record
+  **m\* ≤ 96** (`artifacts/mstar_witness_E96.txt`, cloud, ~48 min).
 * Decision run at target 65 (6 h, 10 workers): **in flight**
   (`artifacts/mstar_decision65.log`).
 * Useful secondary targets once it resolves: 61 (consistency check against
