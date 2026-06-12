@@ -65,5 +65,62 @@ quantitative:
    (certify_mstar_lb.py) covers the residue; if the hand proof reaches 66,
    the ladder is scaffolding and the r=5 proof is human-readable.
 
-Status: footholds proven (elementary); cascade accounting OPEN — this is
-the active pen-and-paper front of the campaign.
+Status: footholds proven (elementary); **Milestone 1 PROVED (see below)**;
+the q ≤ 10 cascade toward 66 is the active front.
+
+---
+
+## MILESTONE 1 (2026-06-12): m\* ≥ 60, by hand
+
+**Theorem.** Every graph G on 26 vertices with α(G) ≤ 5 and every 6-set
+spanning ≤ 11 edges has e(G) ≥ 60.
+
+*Proof.*  Pass to the complement H: K₆-free, every 6-set spans ≥ 4 edges;
+suppose for contradiction e(H) ≥ 266 = e(T₂₆,₅) − 4.
+
+**(1) Stability.**  By Füredi's Theorem 1 (arXiv:1501.03129, verbatim: "If
+K_{p+1} ⊄ G, |V(G)| = n, t ≥ 0, and e(G) = e(T_{n,p}) − t, then there
+exists an (at most) p-chromatic subgraph H₀ ⊆ G with e(H₀) ≥ e(G) − t" —
+no conditions on n or t), applied with p = 5, t = 270 − e(H) ≤ 4: the
+5-colour classes of H₀ give a 5-partition of V with **I ≤ 4 internal
+H-edges**.
+
+**(2) The partition is forced to be (6,5,5,5,5).**  Five parts of size ≤ 5
+cover only 25 < 26 vertices, so some part has ≥ 6.  A part of size 7 needs
+≥ 6 internal edges (every 6-subset spans ≥ 4: summing m − deg(x) ≥ 4 over
+its 7 vertices gives 5m ≥ 28), and sizes ≥ 8 need ≥ 8 — both exceed I ≤ 4.
+Two parts of size 6 need 4 + 4 = 8 > 4.  Hence exactly one 6-part P₀ and
+four 5-parts; the 6-set P₀ forces e(P₀) ≥ 4, so **I = 4, e(P₀) = 4, and
+every 5-part is internally empty**.
+
+**(3) Hole budgets.**  Write "holes" for missing cross-pairs of the
+partition; counting e(H) = (270 − holes) + I ≥ 266 gives **holes ≤ 8**.
+Foothold 1 with empty 5-parts: every vertex has ≤ 1 hole into each 5-part.
+
+**(4) Blocking.**  Pick any internal edge uv ⊆ P₀.  For i = 1..4 let
+Uᵢ ⊆ Pᵢ be the common H-neighbours of u and v in Pᵢ; by (3),
+|Uᵢ| ≥ 5 − 1 − 1 = 3.  If some transversal (w₁,…,w₄) ∈ U₁×…×U₄ had all six
+wᵢwⱼ pairs present, {u,v,w₁..w₄} would be a K₆.  So the cross-holes
+between 5-parts must meet every transversal of U₁×…×U₄.  A hole between
+parts i and j kills exactly ∏_{m∉{i,j}}|U_m| of the ∏|U_m| transversals,
+so the number of such holes is at least min_{i<j}|Uᵢ||Uⱼ| ≥ 3·3 = **9**.
+
+But (3) caps ALL holes at 8 < 9.  Contradiction. ∎
+
+Notes: the proof needs only ONE internal edge in P₀, and the bound 9 > 8
+has slack against u, v spending A-holes (each A-hole spent shrinks the
+budget 8 further while |Uᵢ| ≥ 3 regardless).  Independent consistency:
+CP-SAT minimise has m\* ≤ 90 (verified witness), and the certified ladder
+(T58/T60) cross-checks by machine.  Trust base: Füredi 2015 Theorem 1
+(published; statement verified verbatim against ar5iv 2026-06-12; we do
+NOT need the weaker 3t edit-distance corollary).
+
+## Next rungs (active): q ≤ 10 (target m\* ≥ 66 = the r=5 proof)
+
+For e(H) ≥ 260, t = q ≤ 10: I ≤ 10 admits richer partitions (two 6-parts
+iff I ≥ 8; one 5-part may carry ≤ 6 internal edges, loosening Foothold-1
+budgets to 1 + e(P)).  The same four steps go through with a finite case
+tree over (size vector, I-distribution); the blocking bound becomes
+min|Uᵢ||Uⱼ| with |Uᵢ| ≥ 5 − (2 + e(Pᵢ))-type budgets, against
+holes ≤ 10 + I.  First targets: q = 5, 6 (m\* ≥ 61, 62 — the latter
+re-derives the imported pass-ladder bound *unconditionally*).
