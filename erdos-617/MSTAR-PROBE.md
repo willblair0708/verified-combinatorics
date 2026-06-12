@@ -37,10 +37,11 @@ proof of #617 r = 5.
 
 ## Status
 
-* Minimise run (3 h, 13 workers): incumbents 122 → **116** in the first
-  5 min (`artifacts/mstar_witness_E116.txt`, independently VERIFIED:
-  m\* ≤ 116), internal lower bound parked at the Turán cut 55.  Stopped in
-  favour of the decision form.
+* Minimise run (13 workers, stopped at ~7 min in favour of the decision
+  form): incumbents 122 → **98**, still descending at kill time
+  (`artifacts/mstar_witness_E98.txt`, independently VERIFIED: m\* ≤ 98);
+  internal lower bound parked at the Turán cut 55.  Minimise relaunched at
+  cloud scale alongside the decision runs.
 * Decision run at target 65 (6 h, 10 workers): **in flight**
   (`artifacts/mstar_decision65.log`).
 * Useful secondary targets once it resolves: 61 (consistency check against
