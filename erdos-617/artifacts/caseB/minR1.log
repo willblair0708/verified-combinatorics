@@ -1,0 +1,3 @@
+[minR1] star: OPTIMAL min=45 bound=45.0
+[minR1] chair: FEASIBLE min=39 bound=25.0
+[minR1] K13K2: FEASIBLE min=43 bound=24.0

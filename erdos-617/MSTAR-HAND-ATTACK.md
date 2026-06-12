@@ -128,21 +128,61 @@ sᵢ ∈ {0,1,2} holes into Pᵢ and |Uᵢ| = 5 − sᵢ.  Total holes ≥
 (The same table gives 13 > 12 = the q = 6 budget, so Case A is closed
 through q = 6 as well; it fails first at q = 7 where holes ≤ 14.)
 
-**Case B (I₅ = 1, edge xy in a 5-part P₁): OPEN — the active front.**
-Structure established so far: budgets loosen only toward P₁
-(≤ 2 holes/vertex) and toward P₀ (config-dependent: for z′ ∈ P₀ of
-P₀-degree d, any outside vertex w has ≥ d neighbours in P₀ − z′).  The
-edge xy carries its own blocking system over transversals
-P₀ × P₂ × P₃ × P₄; writing Wᵢ(z) = Pᵢ ∩ N(x) ∩ N(y) ∩ N(z) for z ∈ P₀
-common to x, y, the empty-part budgets give |Wᵢ(z)| ≥ 2, so each
-unblocked z needs ≥ min|Wᵢ||Wⱼ| ≥ 4 between-5-part holes in its W-sets
-(shareable across z).  The uv-system alone reaches only ≥ 9 here (the
-adversary spends s₁ = 4 into the loosened P₁), so the contradiction must
-charge the xy-system against the remaining budget — target: total ≥ 11
-> 10.  Next step: hole-allocation minimisation with both systems and
-P₀-configuration cases (star vs path vs matching+P₃ degree sequences);
-a small exhaustive allocation check is the planned proof-discovery aid,
-with the clean argument extracted afterwards.
+**Case B (I₅ = 1, edge xy in a 5-part P₁): CLOSED — see the next
+section.**  The covering bound (≥ min|Uᵢ||Uⱼ|) was the wrong tool (it
+bottoms out at 9 ≤ 10); the closure came from a *feasibility* analysis:
+blocking a (≥3)×(≥2)×(≥2) grid between empty parts is impossible, not
+merely expensive.
+
+### Rung q = 5, Case B: CLOSED (2026-06-12, agent-derived, twice machine-checked) — m\* ≥ 61
+
+**Lemma G (grid).**  Let A, B, C be subsets of three distinct internally
+empty 5-parts with |A| ≥ 3, |B|, |C| ≥ 2.  Then some transversal
+(a, b, c) ∈ A × B × C has all three pairs present in H.
+*Proof.*  Shrink to |A| = 3, |B| = |C| = 2; suppose all transversals
+blocked.  Fix a ∈ A.  If a has no hole into B: pick c ∈ C with ac
+present (a has ≤ 1 hole into C's part); then (a, b₁, c), (a, b₂, c)
+force b₁c, b₂c both holes — two holes at c into one part, violating c's
+budget.  So each of the three a ∈ A has a hole into {b₁, b₂}; some bᵢ
+absorbs two from distinct vertices of A's part — violating bᵢ's budget. ∎
+
+**Lemma E (exact pinning).**  For every internal edge uv ⊆ P₀ and every
+internally empty 5-part Pᵢ (i ≥ 2): |Uᵢ| = 3 exactly, so u and v each
+have exactly one hole into Pᵢ at distinct vertices; and every pivot
+w₁ ∈ U₁ has exactly one hole into each Uᵢ, landing inside Uᵢ.
+*Proof.*  |Uᵢ| ≥ 3, |U₁| ≥ 1 by budgets.  If |Uᵢ| ≥ 4: take w₁ ∈ U₁,
+Uⱼ′ = Uⱼ ∩ N(w₁) (sizes ≥ |Uⱼ| − 1); Lemma G on (Uᵢ′; Uⱼ′, Uₖ′) yields a
+present transversal, and {u, v, w₁, w₂, w₃, w₄} spans all 15 pairs — K₆.
+Same argument forces |Uᵢ′| = 2. ∎
+
+**Theorem (Case B).**  The four P₀-edges span ≥ 4 vertices of P₀; by
+Lemma E each spanned vertex carries exactly one hole into each of
+P₂, P₃, P₄ — all distinct pairs.  Total ≥ 3·4 = 12 > 10.  ∎  Combined
+with Case A: **e(H) ≤ 264, i.e. m\* ≥ 61**, trust base Füredi 2015
+Thm 1 + elementary counting.
+
+Remarks.  (1) Retrofit: the same lemmas re-close Case A at ≥ 16 > 10 and
+Milestone 1 at ≥ 12 > 8, with slack.  (2) Machine cross-checks (OR-Tools
+CP-SAT, artifacts/caseB/): full Case-B spec INFEASIBLE at ≤ 10 holes for
+all nine non-isomorphic 4-edge P₀-configurations; the premise-exact
+relaxation (exactly the proof's hypotheses) INFEASIBLE at ≤ 11 and ≤ 14,
+matching the hand bounds 12 and 15; encoding validated by verified SAT
+witnesses at higher hole counts and by rejection of two near-miss hand
+allocations exactly where Lemma G predicts.  Lemma G itself brute-forced:
+(3,2,2) unblockable, (2,2,2) blockable with minimum 6.
+
+### Rung q = 6 (m\* ≥ 62) status
+
+Machine ground truth: all 27 cases (nine P₀-configs × {matching in P₁,
+path in P₁, edges in P₁ and P₂}) INFEASIBLE at ≤ 12 under the full
+spec — every (6,5,5,5,5) sub-case of q = 6 is TRUE and awaits hand
+polish.  By hand: both-edges-in-P₁ closes via Lemmas G/E + endpoint
+accounting (~2 pages, checked branch-by-branch); e(P₀) = 5 and 6 splits
+close free (≥ 15 > 12 with the pivot bonus; Case A's 13/16 > 12).  The
+one real hand-gap in (6,5,5,5,5): the edges-in-two-parts variant's
+three-system dichotomy.  Genuinely open at q = 6: the **(7,5,5,5,4)
+size vector** — the 4-part admits no single-vertex budget, so the grid
+machinery needs a new foothold there.
 
 ## Rungs q = 6..10 (toward 66 = the r=5 proof)
 
