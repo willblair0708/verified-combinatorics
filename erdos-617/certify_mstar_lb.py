@@ -23,18 +23,23 @@ each spec-implied (witnessed by construction maps logged alongside).  Any
 SAT model passing all caps would instead be a witness m* <= TARGET (checked
 independently by check_mstar_witness.py) — both exits are decisive.
 
-Usage: certify_mstar_lb.py TARGET [max_rounds]
+Usage: certify_mstar_lb.py TARGET [max_rounds] [--seed]
+  --seed: pre-cap every 6-set spanning >= 10 edges in any verified witness
+          artifacts/mstar_witness_E*.txt (the dense regions of near-optimal
+          graphs are where low-edge models overflow; caps are spec-implied
+          for EVERY 6-set, so seeding any subset is sound).
 Artifacts: artifacts/mstar_lb_T{T}.cnf(.gz), .drat, certs in
 artifacts/mstar_lb_summary.txt; requires glucose + drat-trim on PATH for the
 certificate leg (CaDiCaL CEGAR leg runs regardless).
 """
-import itertools, subprocess, sys, time
+import glob, itertools, subprocess, sys, time
 from pysat.card import CardEnc, EncType
 from pysat.formula import IDPool
 from pysat.solvers import Cadical195
 
 TARGET = int(sys.argv[1])
-MAXROUNDS = int(sys.argv[2]) if len(sys.argv) > 2 else 4000
+MAXROUNDS = int(sys.argv[2]) if len(sys.argv) > 2 and sys.argv[2].isdigit() else 4000
+SEED = "--seed" in sys.argv
 
 V = range(26)
 EDGES = list(itertools.combinations(V, 2))
@@ -49,8 +54,35 @@ tot = CardEnc.atmost([EIDX[e] for e in EDGES], bound=TARGET,
                      vpool=pool, encoding=EncType.totalizer)
 clauses.extend(tot.clauses)
 
-s = Cadical195(bootstrap_with=clauses)
 capped = set()
+
+
+def cap_clauses(S):
+    enc = CardEnc.atmost([EIDX[e] for e in itertools.combinations(S, 2)],
+                         bound=11, vpool=pool, encoding=EncType.seqcounter)
+    return enc.clauses
+
+
+if SEED:
+    dense = set()
+    for path in glob.glob("artifacts/mstar_witness_E*.txt"):
+        adj = [0] * 26
+        for line in open(path):
+            u, v = map(int, line.split())
+            adj[u] |= 1 << v; adj[v] |= 1 << u
+        for S in SIXES:
+            if S in dense:
+                continue
+            cnt = sum((adj[S[i]] >> S[j]) & 1
+                      for i in range(6) for j in range(i + 1, 6))
+            if cnt >= 10:
+                dense.add(S)
+    for S in dense:
+        capped.add(S)
+        clauses.extend(cap_clauses(S))
+    print(f"seeded {len(dense)} caps from witnesses", flush=True)
+
+s = Cadical195(bootstrap_with=clauses)
 t0 = time.time()
 rounds = 0
 while True:
@@ -86,10 +118,8 @@ while True:
         sys.exit(2)
     for S in viol:
         capped.add(S)
-        enc = CardEnc.atmost([EIDX[e] for e in itertools.combinations(S, 2)],
-                             bound=11, vpool=pool, encoding=EncType.seqcounter)
-        clauses.extend(enc.clauses)
-        for c in enc.clauses:
+        for c in cap_clauses(S):
+            clauses.append(c)
             s.add_clause(c)
     if rounds % 25 == 0:
         print(f"  round {rounds}: {len(capped)} capped six-sets, "
