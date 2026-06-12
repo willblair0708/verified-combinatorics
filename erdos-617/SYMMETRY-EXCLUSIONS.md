@@ -51,7 +51,7 @@ one representative 6-set per ⟨g⟩-class, colour value-precedence breaking):
 | z7-3, z7-2 | 5, 12 | 55, 103 | UNSAT (also §2) |
 | z5-5, z5-4, z5-3 | 1, 6, 11 | 65, 77, 109 | UNSAT (also §2) |
 | z3-8, z3-7, z3-6 | 2, 5, 8 | 109, 115, 127 | UNSAT |
-| z3-5 | 11 | 145 | UNSAT (cloud, 32-core) |
+| z3-5, z3-4, z3-3, z3-2, z3-1 | 11, 14, 17, 20, 23 | 145, 163, 187, 217, 253 | UNSAT (cloud, 32-core) |
 | z2-13 | 0 | 169 | UNDECIDED at 600 s (min 9 distinct orbits per class — no cheap kill) |
 | z2-12 | 2 | 169 | UNDECIDED at 3 600 s locally; rerunning at cloud scale, 24 h budget |
 
@@ -64,11 +64,12 @@ Logs: `artifacts/z13_search.log`, `artifacts/z{3,5}_search.log`,
 ## 4. Consequences
 
 * **Theorem (computational).** No balanced 5-colouring of K₂₆ admits a
-  vertex-automorphism of prime order p ≥ 5, of any cycle shape; nor of
-  order 3 with ≤ 8 fixed points; nor (pending the z2 runs) of order 2 with
-  ≤ 2 fixed points.  In particular any counterexample to #617 at r = 5 has
-  an automorphism group that is a {2,3}-group all of whose elements of
-  order 3 fix ≥ 11 points (and, pending z2, of order 2 fix ≥ 4).
+  vertex-automorphism of **any odd prime order, of any cycle shape**
+  (p ≥ 5: §2 hand proofs + SAT; p = 3: all eight shapes z3-1..8 by SAT,
+  the fixed-point-rich tail at cloud scale).  Hence any counterexample to
+  #617 at r = 5 has an automorphism group that is a **2-group**; the
+  involution shapes z2-12, z2-13 (in flight) are the first rungs of that
+  remaining tower (z2-1..11 open).
 * PSL₂(25) on P¹(F₂₅) has elements of prime order 2, 3, 5, 13 only, with
   shapes z2-12, z3-8, z5-5, z13-2 — all closed except z2-12 (in flight).
   Once it lands: **no balanced colouring is invariant under any nontrivial
