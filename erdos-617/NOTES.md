@@ -106,9 +106,11 @@ solver call — the lazy constraint families (6-set bounds, 4-partiteness)
 were never needed.
 
 Run `python3 collect_results.py` for the generated table with timings.
-Summary: **24/24 CDCL UNSAT** (CaDiCaL 1.9.5), CP-SAT cross-checks
-INFEASIBLE on every case checked, DRAT certificates produced by Glucose
-4.2 and verified by drat-trim for the main CNFs.
+Summary: **24/24 CDCL UNSAT** (CaDiCaL 1.9.5); **6/6 DRAT certificates**
+produced by Glucose 4.2 (independent second solver) and machine-verified
+by drat-trim (`s VERIFIED`; see artifacts/certs_summary.txt — total
+verification ~4 CPU-hours, largest proof 2.7 GB); CP-SAT third-engine
+INFEASIBLE confirmation on II.k0.
 
 ### Trust base for the UNSAT claim
 
