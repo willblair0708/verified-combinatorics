@@ -206,6 +206,54 @@ the grid to (2,2,2), which IS blockable (min 6).  Lemma E does not
 transfer; the demand must charge (i) q-side dodging holes, (ii) residual
 (2,2,2)-grid blocking at ~6 β-holes, (iii) P₇-internal spread (6 edges
 on 7 vertices with every 6-subset ≥ 4 ⟹ ≥ 5 vertices spanned).
-(c) *Target*: at q = 6 this vector has cross-pairs 268, so holes ≤
-268 + 6 − 263 = 11; the (i)+(ii)+(iii) accounting must beat 11, with the
-pair-budget lattice (a) making Q-spends expensive at scale.
+(c) *Target*: at q = 6 this vector has cross-pairs 268 and e(H) = 264,
+so holes = 268 + 6 − 264 = **10**; the (i)+(ii)+(iii) accounting must
+beat 10, with the pair-budget lattice (a) making Q-spends expensive at
+scale.
+
+## Multiedge agent integration (2026-06-13) — what is verified vs claimed
+
+A second agent attacked the joint multi-edge accounting.  Its artifacts
+were lost (ephemeral /tmp cleaned on completion), so its claims are
+triaged here by what survives independent recheck.
+
+**INDEPENDENTLY CONFIRMED (re-reproduced here, `verify_18lemma.py`):**
+the "18-lemma".  A single internal edge uv ⊆ P₀ with all four 5-parts
+empty forces its U-grid (3×3×3×3) to be blocked by between-part holes,
+and under the Foothold-1 *matching* constraint (each vertex ≤ 1 hole per
+part) the exact minimum is **18** — not the naive covering bound 9
+(which ignores the matching constraint; the constraint is the whole
+crux).  So the single-edge Case-A demand is 8 (endpoints) + 18 = **26**,
+and since 26 > 2q for all q ≤ 12, **Case A (all 5-parts internally
+empty) dies at every rung through q = 12**.  Consequence (the agent's
+L4): at every rung q ≤ 10 some 5-part must carry an internal edge — the
+fight is always in the "Case B and beyond" regime.
+
+**SOUND, elementary, spot-checked — the shape census** (min internal
+edges f(m) of an m-part with every 6-subset ≥ 4 edges): f(≤5) = 0,
+f(6) = 4, **f(7) = 6** (hand-verified: 5·e(P₇) ≥ 7·4 ⟹ e ≥ 6; P₇
+achieves, every 6-subset of a path spans ≥ 4), f(8) = 8 (2-regular
+forced), f(9) = 11 (excludes all 9-parts through q = 10), 4-parts need
+Σf ≥ 15.  This pins the partition shapes per rung:
+q ≤ 5 → only (6,5,5,5,5); q = 6 → adds (7,5,5,5,4); q = 8 → adds
+(6,6,5,5,4),(8,5,5,4,4),(8,5,5,5,3); q = 10 → adds (7,6,5,4,4),(7,6,5,5,3).
+
+**CLAIMED, artifacts lost — NOT banked, needs re-computation:**
+- m\* ≥ 62 via (7,5,5,5,4): claimed closed by hand ("Σ ≥ 12 > budget").
+  Status: the *other* shape at q=6, (6,5,5,5,5), is machine-verified
+  27/27 (artifacts/caseB, two agents).  (7,5,5,5,4) is the sole
+  remaining shape and is being settled cleanly by the direct probe at
+  target 61 (`probe_mstar.py … 61`; INFEASIBLE ⟹ m\* ≥ 62 outright, no
+  partition dependence) — running.
+- Rungs q = 7..10 (m\* ≥ 63..66): the agent reported a 154-vector grid
+  with per-vector CP-SAT minima, claiming q=7 "four exact solves away"
+  and q ≤ 10 reducing to finishing the grid.  The agent itself did NOT
+  claim 66 closed, and flagged q = 7 hand-ledgers landing *at* budget
+  (14 vs 14) for cap-3/4 kill-vectors.  All artifacts lost.  This whole
+  tower must be re-run before any m\* ≥ 63 claim — it is a roadmap, not
+  a result.
+
+**Honest ladder state: 61 PROVEN (hand, twice-checked); 62 machine-pending
+(one shape left, direct probe running); 63–66 a documented roadmap whose
+load-bearing lemma (18) now checks out but whose per-vector closures need
+reconstruction.**
