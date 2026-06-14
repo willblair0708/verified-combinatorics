@@ -70,9 +70,11 @@ def configs_for(q):
     for c in base6:
         out.append((list(c)+[(P1[0],P1[1])], cap7, "I7_e06_5part"))
         out.append((list(c)+[(Q[0],Q[1])],   cap7, "I7_e06_Qpart"))
-    # I=7: e0=7
-    for c in valid_7part(7):
-        out.append((list(c), cap7, "I7_e07"))
+    # I=7: e0=7 (slow enumeration; skip with SKIP_E07=1 to handle separately)
+    import os
+    if os.environ.get("SKIP_E07") != "1":
+        for c in valid_7part(7):
+            out.append((list(c), cap7, "I7_e07"))
     return out
 
 

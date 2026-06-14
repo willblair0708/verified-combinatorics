@@ -260,6 +260,22 @@ admissible shapes at q=6 (e(H)=264) are (6,5,5,5,5) and (7,5,5,5,4):
 Both engines validated (road62 reproduces caseB Case-A min=34).  Trust base:
 Füredi 2015 Thm 1 + the full-spec CP-SAT decision.  **m* ≥ 62.**
 
+### Rung 63 (q=7, e(H)=263) — (6,5,5,5,5) shape CLOSED (2026-06-13)
+
+`run_655_parallel.py` + `rerun_stragglers.py`: all **249 non-isomorphic
+(6,5,5,5,5) internal configs** (I∈{4..7}, budgets 11..14) INFEASIBLE —
+232 in the 600 s pass, the 17 dense cap=14 (I=7) stragglers each
+INFEASIBLE at 2400 s.  **Zero feasible.**  The (7,5,5,5,4) half (e0=6
+part, 18 configs) is running; e0=7 needs a faster graph canonicalizer.
+So **m* ≥ 63 is pending only the (7,5,5,5,4) completion.**
+
+**Compute-wall datum (decisive for the path to 66):** UNSAT time scales
+~4× per unit of hole budget (cap 13 → 600 s, cap 14 → 2400 s, one config
+verified).  Rungs 64–66 carry budgets 15–20 ⟹ individual configs would
+need hours-to-days each ⟹ **brute CP-SAT cannot reach m* ≥ 66.**  The
+dense high-budget configs must fall to the analytic lemmas (18-lemma /
+grid / pinning) — the hybrid hand+machine route.
+
 ## Multiedge agent integration (2026-06-13) — what is verified vs claimed
 
 A second agent attacked the joint multi-edge accounting.  Its artifacts
