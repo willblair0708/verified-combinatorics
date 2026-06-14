@@ -249,12 +249,16 @@ returns SAT with **minimum 34 holes**, reproducing the Case-B agent's
 independently-reported value exactly — so the infeasibility above is real,
 not a vacuous-model artifact.
 
-**Rung 62 status.** The two admissible shapes at q=6 are (6,5,5,5,5) and
-(7,5,5,5,4).  (7,5,5,5,4): CLOSED (above).  (6,5,5,5,5): I=4 (Case A)
-killed by the confirmed 18-lemma (single edge ≥ 26 > 10); I=5,6 are the
-caseB-style 5-part-edge cases (agent-claimed 27/27, artifacts lost) — now
-re-runnable with the validated road62 engine.  So **m* ≥ 62 is one
-clean sweep from fully banked**, with the hard new shape already closed.
+**Rung 62 status: CLOSED — m* ≥ 62 unconditional (2026-06-13).** The two
+admissible shapes at q=6 (e(H)=264) are (6,5,5,5,5) and (7,5,5,5,4):
+- (7,5,5,5,4): all six 7-part structures INFEASIBLE at holes≤10 (road62.py).
+- (6,5,5,5,5): `rung62_complete.py` enumerates **all 96 non-isomorphic
+  internal configurations** (I∈{4,5,6}: the 9/15/21 graphs on 6 vertices
+  for e₀=4/5/6 edges in P0, crossed with the 0/1/2 five-part edge
+  distributions, at budgets 10/11/12) — **all 96 INFEASIBLE**
+  (artifacts/road66/rung62_complete.log).
+Both engines validated (road62 reproduces caseB Case-A min=34).  Trust base:
+Füredi 2015 Thm 1 + the full-spec CP-SAT decision.  **m* ≥ 62.**
 
 ## Multiedge agent integration (2026-06-13) — what is verified vs claimed
 
