@@ -1,0 +1,10 @@
+(7,5,5,5,4) decision at holes <= 10  (INFEASIBLE all => m* >= 62)
+
+  C6+K1     : INFEASIBLE  (227109 six-cuts, 131784 K6-blocks)
+  C3+C3+K1  : INFEASIBLE  (226259 six-cuts, 133722 K6-blocks)
+  C5+P2     : INFEASIBLE  (227204 six-cuts, 131784 K6-blocks)
+  C4+P3     : INFEASIBLE  (226995 six-cuts, 131784 K6-blocks)
+  C3+P4     : INFEASIBLE  (226741 six-cuts, 132753 K6-blocks)
+  P7        : INFEASIBLE  (227166 six-cuts, 131784 K6-blocks)
+
+VERDICT: all INFEASIBLE => (7,5,5,5,4) dead at e(H)=264 => m* >= 62

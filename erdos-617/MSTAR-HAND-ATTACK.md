@@ -230,13 +230,31 @@ edge uv, U_Q := Q ∩ N(u) ∩ N(v).
   empty parts, per the caseB exhaustion).  So this edge alone charges
   ≥ 3 + 6 = 9.
 
-STATUS: the C₆ sub-case is one combine-step from closed (9 from the
-U_Q≠∅ edge + the residual Q-holes from the other five edges must exceed
-10 — needs the per-structure bookkeeping finished).  The other P₇
-structures (C₅⊔P₂, C₃⊔P₄, P₇, C₄⊔P₃, C₃⊔C₃⊔K₁) need the same treatment.
-NOT a complete proof yet — recorded so it is not lost; the cloud decision
-ladder (dec61) settles m* ≥ 62 by machine in parallel as the reliable
-route.
+STATUS (hand): the C₆ sub-case is one combine-step from closed.
+Superseded for the closure itself by the machine result below.
+
+### (7,5,5,5,4) CLOSED BY MACHINE (2026-06-13, validated) — m* ≥ 62
+
+`road62.py` (full-spec CP-SAT, adapted from the validated
+artifacts/caseB/caseB_model.py): H = complete 5-partite on sizes
+(7,5,5,5,4) minus holes plus the 6 internal edges of the 7-part; enforce
+every 6-set ≥ 4 and block every K₆.  At e(H)=264 ⟺ holes ≤ 10.  The 7-part
+has max-degree ≤ 2, so its six edges form exactly six structures
+(C₆+K₁, C₃+C₃+K₁, C₅+P₂, C₄+P₃, C₃+P₄, P₇).  **All six INFEASIBLE at
+holes ≤ 10** (artifacts/road66/road62_decision.log) — in fact INFEASIBLE
+at unbounded holes for C₆+K₁, so the shape never hosts a valid H.
+
+MODEL VALIDATED: the identical encoding run on (6,5,5,5,5) Case-A C4
+returns SAT with **minimum 34 holes**, reproducing the Case-B agent's
+independently-reported value exactly — so the infeasibility above is real,
+not a vacuous-model artifact.
+
+**Rung 62 status.** The two admissible shapes at q=6 are (6,5,5,5,5) and
+(7,5,5,5,4).  (7,5,5,5,4): CLOSED (above).  (6,5,5,5,5): I=4 (Case A)
+killed by the confirmed 18-lemma (single edge ≥ 26 > 10); I=5,6 are the
+caseB-style 5-part-edge cases (agent-claimed 27/27, artifacts lost) — now
+re-runnable with the validated road62 engine.  So **m* ≥ 62 is one
+clean sweep from fully banked**, with the hard new shape already closed.
 
 ## Multiedge agent integration (2026-06-13) — what is verified vs claimed
 
