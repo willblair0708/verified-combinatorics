@@ -260,14 +260,20 @@ admissible shapes at q=6 (e(H)=264) are (6,5,5,5,5) and (7,5,5,5,4):
 Both engines validated (road62 reproduces caseB Case-A min=34).  Trust base:
 Füredi 2015 Thm 1 + the full-spec CP-SAT decision.  **m* ≥ 62.**
 
-### Rung 63 (q=7, e(H)=263) — (6,5,5,5,5) shape CLOSED (2026-06-13)
+### Rung 63 (q=7, e(H)=263) — CLOSED, m* ≥ 63 (2026-06-13)
 
-`run_655_parallel.py` + `rerun_stragglers.py`: all **249 non-isomorphic
-(6,5,5,5,5) internal configs** (I∈{4..7}, budgets 11..14) INFEASIBLE —
-232 in the 600 s pass, the 17 dense cap=14 (I=7) stragglers each
-INFEASIBLE at 2400 s.  **Zero feasible.**  The (7,5,5,5,4) half (e0=6
-part, 18 configs) is running; e0=7 needs a faster graph canonicalizer.
-So **m* ≥ 63 is pending only the (7,5,5,5,4) completion.**
+Both admissible shapes dead at e(H)=263, **301 configs total, zero feasible**:
+- **(6,5,5,5,5): 249/249 INFEASIBLE** (`run_655_parallel.py` +
+  `rerun_stragglers.py`) — I∈{4..7}, the 9/15/21 graphs on 6 vtx × the
+  0/1/2/3 five-part edge distributions; 232 closed in the 600 s pass, the
+  17 dense cap=14 (I=7) stragglers each INFEASIBLE at 2400 s.
+- **(7,5,5,5,4): 52/52 INFEASIBLE** (`rung_754_parallel.py`) — the 6
+  e0=6 structures (I=6) + 12 e0=6+1-edge (I=7) + the **34 e0=7
+  structures** (networkx WL-hash + is_isomorphic enumeration, validated:
+  e0=6 → 6 = road62), budgets 11–12.
+
+**m* ≥ 63, unconditional modulo Füredi 2015 Thm 1.**  Artifacts:
+artifacts/road66/rung_7_{655,754}_parallel.jsonl, stragglers.log.
 
 **Compute-wall datum (decisive for the path to 66):** UNSAT time scales
 ~4× per unit of hole budget (cap 13 → 600 s, cap 14 → 2400 s, one config

@@ -34,26 +34,22 @@ for S in itertools.combinations(range(26),6):
     SIX.append(([CIDX[p] for p in cids],intra))
 
 
-def valid_7part(e0):
+def valid_7part(e0, n=7):
     """non-iso graphs on the 7 vertices 0..6 with e0 edges, every 6-subset
-    spanning >= 4 edges (=> max-degree <= 7-4-... handled by the check)."""
-    verts=list(range(7)); allp=list(itertools.combinations(verts,2))
-    seen,reps=set(),[]
+    spanning >= 4 edges (=> max-degree <= 3).  Exact iso-dedup via networkx
+    WL-hash buckets + is_isomorphic (validated: e0=6 -> 6 structs = road62)."""
+    import networkx as nx
+    verts=list(range(n)); allp=list(itertools.combinations(verts,2))
+    buckets={}; reps=[]
     for es in itertools.combinations(allp,e0):
         deg={}
         for a,b in es: deg[a]=deg.get(a,0)+1; deg[b]=deg.get(b,0)+1
-        if deg and max(deg.values())>3: continue          # 6-subset >=4 => deg<=3
-        # every 6-subset (drop one vertex) spans >= 4
-        ok=True
-        for drop in verts:
-            if e0 - deg.get(drop,0) < 4: ok=False; break
-        if not ok: continue
-        best=None
-        for perm in itertools.permutations(verts):
-            mp=tuple(sorted((min(perm[a],perm[b]),max(perm[a],perm[b])) for a,b in es))
-            if best is None or mp<best: best=mp
-        if best in seen: continue
-        seen.add(best); reps.append(list(es))
+        if deg and max(deg.values())>3: continue
+        if any(e0-deg.get(d,0)<4 for d in verts): continue
+        G=nx.Graph(); G.add_nodes_from(verts); G.add_edges_from(es)
+        hsh=nx.weisfeiler_lehman_graph_hash(G, iterations=3)
+        if any(nx.is_isomorphic(G,H) for (H,_) in buckets.get(hsh,[])): continue
+        buckets.setdefault(hsh,[]).append((G,es)); reps.append(list(es))
     return reps
 
 
@@ -70,8 +66,9 @@ def configs_for(q):
     for c in base6:
         out.append((list(c)+[(P1[0],P1[1])], cap7, "I7_e06_5part"))
         out.append((list(c)+[(Q[0],Q[1])],   cap7, "I7_e06_Qpart"))
-    # I=7: e0=7 (slow enumeration; skip with SKIP_E07=1 to handle separately)
     import os
+    if os.environ.get("E07_ONLY") == "1":
+        return [(list(c), cap7, "I7_e07") for c in valid_7part(7)]
     if os.environ.get("SKIP_E07") != "1":
         for c in valid_7part(7):
             out.append((list(c), cap7, "I7_e07"))

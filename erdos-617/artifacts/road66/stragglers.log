@@ -1,0 +1,20 @@
+17 stragglers from artifacts/road66/rung_7_655_parallel.jsonl; TL=2400 WK=4 CC=8
+  [INFEASIBLE] cap=14 (532s)
+  [INFEASIBLE] cap=14 (640s)
+  [INFEASIBLE] cap=14 (721s)
+  [INFEASIBLE] cap=14 (722s)
+  [INFEASIBLE] cap=14 (895s)
+  [INFEASIBLE] cap=14 (979s)
+  [INFEASIBLE] cap=14 (754s)
+  [INFEASIBLE] cap=14 (1040s)
+  [INFEASIBLE] cap=14 (1667s)
+  [INFEASIBLE] cap=14 (1060s)
+  [INFEASIBLE] cap=14 (1378s)
+  [INFEASIBLE] cap=14 (471s)
+  [INFEASIBLE] cap=14 (1168s)
+  [INFEASIBLE] cap=14 (1094s)
+  [INFEASIBLE] cap=14 (2197s)
+  [INFEASIBLE] cap=14 (684s)
+  [INFEASIBLE] cap=14 (1097s)
+
+17 stragglers: 0 not closed. ALL INFEASIBLE => rung closes
