@@ -211,6 +211,33 @@ so holes = 268 + 6 − 264 = **10**; the (i)+(ii)+(iii) accounting must
 beat 10, with the pair-budget lattice (a) making Q-spends expensive at
 scale.
 
+**Partial hand progress (2026-06-13), the C₆ sub-case — clean knockout.**
+P₇ has 6 edges, max-degree ≤ 2 (every 6-subset ≥ 4 ⟹ deg ≤ 2), so it is
+a union of paths/cycles.  Take the sub-case P₇ = C₆ ⊔ K₁.  For an internal
+edge uv, U_Q := Q ∩ N(u) ∩ N(v).
+- If **U_Q = ∅** (u,v jointly miss all 4 of Q), then h_Q(u) + h_Q(v) ≥ 4
+  (each Q-vertex missed by u or v).  Suppose this holds for *every* C₆
+  edge.  Sum over the 6 edges: Σ_{uv∈C₆}[h_Q(u)+h_Q(v)] =
+  Σ_{x∈C₆} deg_{C₆}(x)·h_Q(x) = 2 Σ_x h_Q(x) ≥ 24, so the Q-holes
+  incident to C₆ number ≥ 12 > 10 = budget.  **Contradiction.**  Hence at
+  least one C₆ edge has U_Q ≠ ∅.
+- If **U_Q ≠ ∅**, pick w_Q ∈ U_Q.  Its single-vertex budget into each
+  empty 5-part holds (6-set {w_Q}∪P_i, P_i empty ⟹ ≤1 hole), so
+  |N(w_Q)∩U_i| ≥ |U_i|−1 ≥ 2.  To avoid a K₆ {u,v,w_Q,·,·,·}, Lemma G
+  must fail on (N(w_Q)∩U_a, N(w_Q)∩U_b, N(w_Q)∩U_c): no coordinate ≥ 3,
+  forcing all three = 2 (w_Q spends 3 holes, one per empty part) AND the
+  residual 2×2×2 grid carries no present triangle (≥ 6 holes among the
+  empty parts, per the caseB exhaustion).  So this edge alone charges
+  ≥ 3 + 6 = 9.
+
+STATUS: the C₆ sub-case is one combine-step from closed (9 from the
+U_Q≠∅ edge + the residual Q-holes from the other five edges must exceed
+10 — needs the per-structure bookkeeping finished).  The other P₇
+structures (C₅⊔P₂, C₃⊔P₄, P₇, C₄⊔P₃, C₃⊔C₃⊔K₁) need the same treatment.
+NOT a complete proof yet — recorded so it is not lost; the cloud decision
+ladder (dec61) settles m* ≥ 62 by machine in parallel as the reliable
+route.
+
 ## Multiedge agent integration (2026-06-13) — what is verified vs claimed
 
 A second agent attacked the joint multi-edge accounting.  Its artifacts
