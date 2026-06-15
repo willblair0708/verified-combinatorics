@@ -1,0 +1,6 @@
+# A321531 a(14) = 43: max distinct directions among 14 non-attacking rooks on a 14x14 board.
+# Directions up to scaling and the dihedral action of the square = sorted(|dcol|,|drow|)/gcd.
+# Permutation (1-based: column c holds a rook in row perm[c]):
+1 5 2 11 14 7 12 13 3 8 9 10 6 4
+# This placement realizes 43 distinct direction classes; exhaustive branch-and-bound search
+# (parallel, shared-best pruning) proves no placement of 14 non-attacking rooks exceeds 43.
