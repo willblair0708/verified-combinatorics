@@ -4,3 +4,6 @@
 === (B) KILL-CONSISTENCY: full-spec decision vs lb3 dual LB ===
   star+2xP1 (I6) cap=14: full=INFEASIBLE(70s) lb3_LB=25 lb3_kill=True  [OK]
   star+triangleP1 (I7) cap=15: full=INFEASIBLE(265s) lb3_LB=25 lb3_kill=True  [OK]
+  star+P1,P2 (I6) cap=14: full=UNKNOWN(400s) lb3_LB=21 lb3_kill=True  [*** FALSE KILL: lb3 says kill but full not INFEASIBLE ***]
+
+done.
