@@ -1,0 +1,3 @@
+ATOM star_K23: I=10, cap=40, TL=280s WK=8
+  status=UNKNOWN obj=None dualLB=21.0 (280s)
+  => min_holes >= 21 (dual). cap=40. not yet
