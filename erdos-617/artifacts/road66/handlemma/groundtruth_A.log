@@ -1,0 +1,3 @@
+ground-truth full-spec, TL=2400 WK=14 CC=1, 3 configs
+/opt/homebrew/Caskroom/miniconda/base/lib/python3.13/multiprocessing/resource_tracker.py:324: UserWarning: resource_tracker: There appear to be 5 leaked semaphore objects to clean up at shutdown: {'/mp-382xffy7', '/mp-7c95teey', '/mp-6ls8txpf', '/mp-pygwvug_', '/mp-70x7kkyw'}
+  warnings.warn(

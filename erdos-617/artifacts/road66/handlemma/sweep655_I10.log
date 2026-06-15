@@ -1,0 +1,10 @@
+/Users/williamblair/.local/lib/python3.13/site-packages/networkx/algorithms/graph_hashing.py:211: UserWarning: The hashes produced for graphs without node or edge attributes changed in v3.5 due to a bugfix (see documentation).
+  node_labels = _init_node_labels(G, edge_attr, node_attr)
+(6,5,5,5,5) I=10: 1578 configs, TL=60
+  ...20/1578  worst SLACKBASE so far=-10 (10, (4, 0, 0, 0, 6), 'FEASIBLE', 13, 0)
+  ...40/1578  worst SLACKBASE so far=-10 (10, (4, 0, 0, 0, 6), 'FEASIBLE', 13, 0)
+  ...60/1578  worst SLACKBASE so far=-10 (10, (4, 0, 0, 0, 6), 'FEASIBLE', 13, 0)
+  ...80/1578  worst SLACKBASE so far=-10 (10, (4, 0, 0, 0, 6), 'FEASIBLE', 13, 0)
+  ...100/1578  worst SLACKBASE so far=-10 (10, (4, 0, 0, 0, 6), 'FEASIBLE', 13, 0)
+/opt/homebrew/Caskroom/miniconda/base/lib/python3.13/multiprocessing/resource_tracker.py:324: UserWarning: resource_tracker: There appear to be 5 leaked semaphore objects to clean up at shutdown: {'/mp-7f3pcp7s', '/mp-fir3kjhx', '/mp-i_b5flfl', '/mp-_517pjs3', '/mp-et12k28c'}
+  warnings.warn(

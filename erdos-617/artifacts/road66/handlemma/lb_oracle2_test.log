@@ -1,0 +1,12 @@
+=== families ('B1', 'BK') ===
+  star+2xP1 (e0=4,e1=2) I=6: status=OPTIMAL min=13 LB=13 (1s)
+  star+P1,P2 (e0=4,e1=e2=1) I=6: status=OPTIMAL min=19 LB=19 (53s)
+  star (Case A) I=4: status=OPTIMAL min=38 LB=38 (14s)
+=== families ('B1', 'BK', 'BS4') ===
+  star+2xP1 (e0=4,e1=2) I=6: status=OPTIMAL min=13 LB=13 (2s)
+  star+P1,P2 (e0=4,e1=e2=1) I=6: status=FEASIBLE min=19 LB=18 (91s)
+  star (Case A) I=4: status=OPTIMAL min=38 LB=38 (10s)
+=== families ('B1', 'BK', 'BS4', 'BS3') ===
+  star+2xP1 (e0=4,e1=2) I=6: status=FEASIBLE min=31 LB=19 (93s)
+  star+P1,P2 (e0=4,e1=e2=1) I=6: status=FEASIBLE min=19 LB=17 (93s)
+  star (Case A) I=4: status=FEASIBLE min=38 LB=18 (92s)

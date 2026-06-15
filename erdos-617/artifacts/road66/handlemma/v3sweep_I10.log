@@ -1,0 +1,12 @@
+/Users/williamblair/.local/lib/python3.13/site-packages/networkx/algorithms/graph_hashing.py:211: UserWarning: The hashes produced for graphs without node or edge attributes changed in v3.5 due to a bugfix (see documentation).
+  node_labels = _init_node_labels(G, edge_attr, node_attr)
+v3 sweep shape=(6, 5, 5, 5, 5) d=0 I in [10,10]: 1578 configs, TL=120 CK=4 WK=2 CC=7
+  [NOT closed thru q=10] I=10 lb=2 qmax_killed=-9 st=FEASIBLE E=[(0, 1), (0, 2), (0, 3), (0, 4), (21, 22), (21, 23), (21, 24), (21, 25), (22, 23), (24, 25)] (121s)
+  [NOT closed thru q=10] I=10 lb=0 qmax_killed=-11 st=FEASIBLE E=[(0, 1), (0, 2), (0, 3), (0, 4), (21, 22), (21, 23), (21, 24), (21, 25), (22, 23), (22, 24)] (121s)
+  [NOT closed thru q=10] I=10 lb=2 qmax_killed=-9 st=FEASIBLE E=[(0, 1), (0, 2), (0, 3), (0, 4), (21, 22), (21, 23), (21, 24), (22, 23), (22, 24), (23, 24)] (121s)
+  [NOT closed thru q=10] I=10 lb=0 qmax_killed=-11 st=FEASIBLE E=[(0, 1), (0, 2), (0, 3), (0, 4), (21, 22), (21, 23), (21, 24), (22, 25), (23, 25), (24, 25)] (121s)
+  [NOT closed thru q=10] I=10 lb=1 qmax_killed=-10 st=FEASIBLE E=[(0, 1), (0, 2), (0, 3), (0, 4), (21, 22), (21, 23), (21, 24), (22, 23), (22, 25), (24, 25)] (121s)
+  [NOT closed thru q=10] I=10 lb=1 qmax_killed=-10 st=FEASIBLE E=[(0, 1), (0, 2), (0, 3), (0, 4), (21, 22), (21, 23), (21, 24), (22, 23), (22, 24), (23, 25)] (122s)
+  [NOT closed thru q=10] I=10 lb=1 qmax_killed=-10 st=FEASIBLE E=[(0, 1), (0, 2), (0, 3), (1, 2), (21, 22), (21, 23), (21, 24), (21, 25), (22, 23), (22, 24)] (121s)
+/opt/homebrew/Caskroom/miniconda/base/lib/python3.13/multiprocessing/resource_tracker.py:324: UserWarning: resource_tracker: There appear to be 5 leaked semaphore objects to clean up at shutdown: {'/mp-ucpb09pf', '/mp-cyikim_a', '/mp-85eep68j', '/mp-x5p7ln56', '/mp-0q9p1lc5'}
+  warnings.warn(

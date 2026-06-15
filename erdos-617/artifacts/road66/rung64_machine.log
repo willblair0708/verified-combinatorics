@@ -1,0 +1,9 @@
+/Users/williamblair/.local/lib/python3.13/site-packages/networkx/algorithms/graph_hashing.py:211: UserWarning: The hashes produced for graphs without node or edge attributes changed in v3.5 due to a bugfix (see documentation).
+  node_labels = _init_node_labels(G, edge_attr, node_attr)
+(807 walled configs cap>13 deferred to hand-lemma)
+rung q=8 targets=[(8, 5, 5, 5, 3), (8, 5, 5, 4, 4), (7, 5, 5, 5, 4), (6, 6, 5, 5, 4), (6, 5, 5, 5, 5)]: 91 configs, TL=1200 WK=3 CC=4
+  ...50/91, 0 non-inf
+  [UNKNOWN] (6, 5, 5, 5, 5) cap=13 E=[(0, 1), (0, 2), (0, 3), (1, 4), (21, 22)] (603s)  <<< inconclusive
+  [UNKNOWN] (6, 5, 5, 5, 5) cap=13 E=[(0, 1), (0, 2), (1, 3), (2, 3), (21, 22)] (609s)  <<< inconclusive
+
+q=8: 91 configs, 2 non-infeasible. NOT all closed

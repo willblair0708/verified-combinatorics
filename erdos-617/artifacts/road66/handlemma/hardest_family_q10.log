@@ -1,0 +1,6 @@
+hardest family: star + 6-edge-graph in P1 (I=10), q=10 cap=20, 6 graphs, TL=2400 WK=5 CC=3
+  deg[3, 3, 3, 3, 0]_tri4: q=10 cap=20 -> INFEASIBLE (142s)
+  deg[4, 3, 2, 2, 1]_tri2: q=10 cap=20 -> INFEASIBLE (1104s)
+  deg[4, 2, 2, 2, 2]_tri2: q=10 cap=20 -> INFEASIBLE (1321s)
+  deg[3, 3, 3, 2, 1]_tri2: q=10 cap=20 -> INFEASIBLE (1777s)
+  deg[3, 3, 2, 2, 2]_tri1: q=10 cap=20 -> INFEASIBLE (914s)

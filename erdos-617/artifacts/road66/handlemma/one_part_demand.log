@@ -1,0 +1,16 @@
+/Users/williamblair/personal/verified-combinatorics/erdos-617/artifacts/road66/handlemma/one_part_demand.py:21: SyntaxWarning: invalid escape sequence '\{'
+  5-subsets: w -> P1\{z}: <= 1 + e1 - deg_{P1}(z).
+Holes forced by an edge-graph F1 in ONE 5-part (P0,P2,P3,P4 empty):
+(this is the W-system demand of a single edge-bearing 5-part)
+
+  F1 = 1 edge             (e1=1): min holes = None  [INTRA_INFEAS, LB=None]
+  F1 = 2 edges (matching) (e1=2): min holes = None  [INTRA_INFEAS, LB=None]
+  F1 = 2 edges (path)     (e1=2): min holes = None  [INTRA_INFEAS, LB=None]
+  F1 = triangle K3        (e1=3): min holes = None  [INTRA_INFEAS, LB=None]
+  F1 = P4 path            (e1=3): min holes = None  [INTRA_INFEAS, LB=None]
+  F1 = K3+e               (e1=4): min holes = None  [INTRA_INFEAS, LB=None]
+  F1 = C4                 (e1=4): min holes = None  [INTRA_INFEAS, LB=None]
+  F1 = K_{2,3}            (e1=6): min holes = None  [INTRA_INFEAS, LB=None]
+  F1 = K4                 (e1=6): min holes = None  [INTRA_INFEAS, LB=None]
+  F1 = K4+e (book)        (e1=7): min holes = None  [INTRA_INFEAS, LB=None]
+  F1 = K5 minus           (e1=8): min holes = None  [INTRA_INFEAS, LB=None]

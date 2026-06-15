@@ -1,0 +1,5 @@
+{"graph": "deg[3, 3, 3, 3, 0]_tri4", "q": 10, "cap": 20, "status": "INFEASIBLE", "secs": 142}
+{"graph": "deg[4, 3, 2, 2, 1]_tri2", "q": 10, "cap": 20, "status": "INFEASIBLE", "secs": 1104}
+{"graph": "deg[4, 2, 2, 2, 2]_tri2", "q": 10, "cap": 20, "status": "INFEASIBLE", "secs": 1321}
+{"graph": "deg[3, 3, 3, 2, 1]_tri2", "q": 10, "cap": 20, "status": "INFEASIBLE", "secs": 1777}
+{"graph": "deg[3, 3, 2, 2, 2]_tri1", "q": 10, "cap": 20, "status": "INFEASIBLE", "secs": 914}

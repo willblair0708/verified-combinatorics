@@ -1,0 +1,2 @@
+{"graph": "K_{2,3}", "I": 10, "q": 8, "cap": 18, "status": "INFEASIBLE", "secs": 314}
+{"graph": "K_{2,3}", "I": 10, "q": 10, "cap": 20, "status": "INFEASIBLE", "secs": 478}

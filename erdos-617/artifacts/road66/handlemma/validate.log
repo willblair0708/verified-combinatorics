@@ -1,0 +1,6 @@
+=== (A) TIGHTNESS: lb3 vs exact full min on Case-A C4 ===
+  Case-A C4: full_min=(FEASIBLE,34)  lb3=(OPTIMAL,min=34,LB=34)  [expect all = 34]
+
+=== (B) KILL-CONSISTENCY: full-spec decision vs lb3 dual LB ===
+  star+2xP1 (I6) cap=14: full=INFEASIBLE(70s) lb3_LB=25 lb3_kill=True  [OK]
+  star+triangleP1 (I7) cap=15: full=INFEASIBLE(265s) lb3_LB=25 lb3_kill=True  [OK]

@@ -1,0 +1,1 @@
+=== SOUNDNESS: lb3_LB <= full_min_holes (must hold; else lb3 BUG) ===
