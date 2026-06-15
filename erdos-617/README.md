@@ -8,6 +8,20 @@ open case is r = 5: does K_26 admit a *balanced* 5-colouring, i.e. one in
 which every 6-set of vertices sees all 5 colours on its 15 edges?  The
 conjecture says no.
 
+## Current result — see [`RESULT.md`](RESULT.md)
+
+The headline result of this directory is now **unconditional**: in any
+balanced 5-colouring of K₂₆ every colour class has **≥ 63 edges**
+(equivalently m\* ≥ 63), proved in [`RESULT.md`](RESULT.md) by a finite
+Füredi-stability rung argument with a validated full-spec solver. The full
+r = 5 case needs m\* ≥ 66; `RESULT.md` §5 localizes the remaining gap to a
+concentrated triangle-free residue that provably resists cheap methods.
+
+The sections below describe an **earlier, conditional** route (the 61-edge
+hitset-pair decision) that the `RESULT.md` argument supersedes; they are
+kept for provenance. The pass-1..20 imports they rely on are *not* in the
+trust base of the m\* ≥ 63 result.
+
 ## Status of this directory
 
 This directory attacks the single sharpest control point left in the
