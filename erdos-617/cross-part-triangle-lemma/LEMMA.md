@@ -108,11 +108,16 @@ Scripts in this directory; reproduce with `python3 <script>`.
   §3's premise always holds); `rainbow_colorings_with_four_distinct_leaves = 0`.
 - **`indep_rainbow.py`** (independent brute force, full 5¹⁰ enumeration, no shared
   code): rainbow count = **0**. Confirms §4 independently of GPT's pruning.
-- **`fix_core_check.py CORE`** (CP-SAT against the full model): with the core
-  pinned to X\* the config has **no ≤ 38-hole completion** (UNSAT) — the obstruction
-  confirmed directly, bypassing the rainbow argument entirely. The empty core
-  (LB = 39) is likewise UNSAT at cap 38, machine-confirming the aggregation lemma at
-  a second, structurally different point.
+- **`fix_core_check.py CORE`** (K\_{2,3}, CP-SAT against the full model): with the
+  core pinned to X\* the config has **no ≤ 38-hole completion** (UNSAT) — the
+  obstruction confirmed directly, bypassing the rainbow argument entirely. The empty
+  core (LB = 39) is likewise UNSAT at cap 38, a second structurally different point.
+- **`confirm_family.py`** (C₄/C₅/P₄, CP-SAT against the full model): for each F the
+  binding core is found by the scan, pinned, and checked at cap B(F)−1 — all UNSAT:
+  **C₄ min ≥ 36, C₅ min ≥ 39, P₄ min ≥ 36.** So every atom of the family is
+  machine-backed at its tightest core, not just K\_{2,3}. (A direct full-model UNSAT
+  at the rung cap times out at this boundary — pinning the core is what makes it
+  tractable, which is the whole reason the hand lemma earns its keep.)
 - **`ground_truth_min.py`** brackets the open full minimization at [22, 49]
   (consistent, but the boundary is too hard for a direct full-model UNSAT — which is
   exactly why the hand lemma matters).
@@ -121,9 +126,13 @@ Scripts in this directory; reproduce with `python3 <script>`.
 fully machine-confirmed. The aggregation lemma (§3) rests on the elementary argument
 above — the campaign's own grid-blocking method (cf. `LEMMAS.md` Theorem A,
 BLOCK(3,3,3,3)=18), extended to cross-part triangles — plus machine confirmation at
-two cores. A publication-grade proof would formalize §3 as a standalone lemma, or a
-full-model UNSAT at cap 38 would seal it (computationally hard at this boundary).
-For the question "does this close the family," the answer is yes.
+**the binding (tightest) core of every atom**: K\_{2,3} at X\* and the empty core,
+and C₄/C₅/P₄ at their binding cores, all UNSAT below their bounds. The one residual
+is that §3 is invoked as a universal lower bound for the *non-binding* cores too;
+those are looser, the argument is uniform, and the tightest case of each atom is
+machine-checked. A publication-grade proof would formalize §3 as a standalone lemma.
+For the question "does this close the family," the answer is yes — and every atom now
+stands on its own machine check.
 
 ## 6. What it does and does not do
 
