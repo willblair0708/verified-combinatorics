@@ -1,9 +1,25 @@
 # A single-colour-class lower bound for Erdős #617 (r = 5)
 
+*W. Blair, 2026. Code and certificates:
+`verified-combinatorics/erdos-617`. Verification: `general_rung.py`,
+`rung62_complete.py`, `rung_754_parallel.py`.*
+
+**Abstract.** The first open case of the Erdős–Gyárfás generalized Ramsey
+problem [ErGy97] asks whether K₂₆ admits a balanced 5-colouring (one in
+which every 6 vertices see all 5 colours). A counting argument reduces a
+proof of impossibility to the single-class bound m\* ≥ 66, where m\* is the
+least number of edges of a graph on 26 vertices with independence number
+≤ 5 in which every 6 vertices span at most 11 edges. We prove **m\* ≥ 63**,
+unconditional, improving the elementary Turán bound m\* ≥ 55 by eight. The
+proof is a finite Füredi-stability "rung" argument whose case analysis is
+discharged by a full-spec SAT/CP decision model, independently validated
+(§3). Section 5 localizes the remaining gap to m\* ≥ 66 and shows it
+provably resists the cheap (fractional/clique) methods.
+
+---
+
 **Result.** In any balanced 5-colouring of K₂₆, every colour class has at
-least **63 edges**. Equivalently, writing m\* for the minimum number of
-edges of a graph G on 26 vertices with α(G) ≤ 5 in which every 6 vertices
-span at most 11 edges, **m\* ≥ 63**.
+least **63 edges**, i.e. m\* ≥ 63 (m\* as in the abstract).
 
 The bound is unconditional, resting only on Füredi's stability theorem
 (2015) and a finite, machine-checked case analysis. It is verified by an
