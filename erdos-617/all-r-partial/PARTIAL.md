@@ -41,6 +41,18 @@ reduces to the
 Summing A_r+1 over r colours exceeds C(r²+1,2): contradiction. For r=5 this is
 exactly the certified `e(G) ≥ 66 = A_5 + 1`.
 
+### 1.1 The local cap is load-bearing  **[VERIFIED]**
+
+One must use the *upper* local cap `e_G(S) ≤ M_r` with `M_r = C(r+1,2)−(r−1)`,
+not merely `α(G), ω(G) ≤ r`. The weaker statement "α,ω ≤ r ⟹ e(G) > A_r" is
+already **false at r=3**: the 10-vertex graph
+`{01,03,09,12,14,24,25,35,39,45,59,67,68,78}` has α=ω=3 yet only **14 < A_3=15**
+edges — it fails *only* the local cap (the 4-set {0,3,5,9} carries 5 > M_3=4
+edges). And `SC(3)` (every 4-set in [1, M_3]) has minimum **18 ≥ A_3+1=16**, so
+the single-colour theorem holds for r=3 with room. Both checked in
+`local_cap_loadbearing.py`. Consequence: any proof of #617 must invoke the upper
+cap, not just independence/clique numbers.
+
 ## 2. Turán-rung window  **[ESTABLISHED]**
 
 Turán number for K_{r+1}-free graphs on r²+1 vertices:
@@ -152,10 +164,19 @@ by the brute-force q=10 CP-SAT sweep** — for which there is no general-r analo
 2. **Discharge §2** — state and cite/prove the exact Füredi partition theorem
    for general r, or identify the precise stability constant needed.
 3. **Attack s ≤ 2.** Candidate routes (each currently with a gap):
-   - *minority-colour + Brooks*: any counterexample's minority colour graph has
-     Δ ≥ r+1 and δ ≤ r−1 (reproduces the Erdős–Gyárfás r=3,4 shape); the missing
-     piece is the all-r induction from this degree structure to a colour-missing
-     (r+1)-set.
+   - *minority-colour + Brooks* (**cleanest route — avoids the partition
+     census**): the minority colour graph G has e(G) ≤ A_r; if Δ(G) ≤ r, Brooks
+     gives an (r+1)-independent set or a K_{r+1} (colour missing), so a
+     counterexample has Δ(G) ≥ r+1 and (since avg degree ≤ r) some x with
+     d(x) ≤ r−1. Deleting x and N(x) leaves R with |R| ≥ r²−r+1. The single
+     missing lemma is
+     > **LD(r):** under `e(G) ≤ A_r`, `e_G(S) ≤ M_r`, `α(G) ≤ r`, the residual R
+     > cannot have `α(G[R]) ≤ r−1`.
+
+     This is exact and finite per r (pin a low-degree vertex; expect UNSAT), and
+     for r=3,4 it is what the Erdős–Gyárfás hand proof effectively verifies. A
+     *symbolic* proof of LD(r) for all r would finish #617 without the near-Turán
+     machinery. Not proved.
    - *(r+1)-critical surplus*: G_c has χ ≥ r+1, so contains an (r+1)-critical
      K_{r+1}-free subgraph with average degree > r; need to combine the critical
      surplus with α ≤ r to force e(G) > A_r. Gap: the critical subgraph may be
