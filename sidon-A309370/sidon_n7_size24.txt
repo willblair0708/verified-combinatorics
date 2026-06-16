@@ -1,0 +1,27 @@
+# A309370 a(7) >= 24: Sidon set in {0,1}^7, integer componentwise addition.
+# 24 vectors, one per line. Generated from the canonical Vela record;
+# re-verify with: vela reproduce examples/sidon-sets/witnesses
+0001000
+0000100
+1100100
+1110100
+1001100
+1100010
+1010010
+1101010
+0011010
+0111010
+1010110
+0001110
+0100001
+1110001
+0011001
+1001101
+0111101
+1000011
+0100011
+1011011
+0000111
+0110111
+0101111
+1101111

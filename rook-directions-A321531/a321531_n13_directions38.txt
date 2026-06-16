@@ -1,6 +1,2 @@
-# A321531 a(13) = 38: max distinct directions among 13 non-attacking rooks on a 13x13 board.
-# Directions up to scaling and the dihedral action of the square = sorted(|dcol|,|drow|)/gcd.
-# Permutation (1-based: column c holds a rook in row perm[c]):
+# A321531 a(13) >= 38: max distinct rook directions, n x n board. From the Vela record.
 1 6 3 12 5 13 9 11 10 8 4 7 2
-# This placement realizes 38 distinct direction classes; exhaustive branch-and-bound search
-# proves no placement of 13 non-attacking rooks exceeds 38. Verified by verify.py.

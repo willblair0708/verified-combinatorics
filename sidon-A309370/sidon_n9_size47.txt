@@ -1,5 +1,6 @@
-# A309370 a(9) >= 47: Sidon set in {0,1}^9, found by Vela multi-strategy construction search (Jun 2026; previous best 46).
-# 47 vectors, one per line. Verified by verify.py (B_2: all 1128 pairwise sums distinct).
+# A309370 a(9) >= 47: Sidon set in {0,1}^9, integer componentwise addition.
+# 47 vectors, one per line. Generated from the canonical Vela record;
+# re-verify with: vela reproduce examples/sidon-sets/witnesses
 000001101
 000010101
 000011011

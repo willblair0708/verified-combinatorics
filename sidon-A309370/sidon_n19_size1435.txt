@@ -1,5 +1,6 @@
-# A309370 a(19) >= 1435: Sidon set in {0,1}^19, found by Vela multi-strategy construction search (Jun 2026; previous best 1397).
-# 1435 vectors, one per line. Verified by verify.py (B_2: all 1030330 pairwise sums distinct).
+# A309370 a(19) >= 1435: Sidon set in {0,1}^19, integer componentwise addition.
+# 1435 vectors, one per line. Generated from the canonical Vela record;
+# re-verify with: vela reproduce examples/sidon-sets/witnesses
 0000000000011110000
 0000000001011011110
 0000000001110000000

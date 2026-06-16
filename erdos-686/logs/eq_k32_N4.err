@@ -1,0 +1,46 @@
+k=32 N=4 progress d=1879048192
+k=32 N=4 progress d=3758096384
+k=32 N=4 progress d=5637144576
+k=32 N=4 progress d=7516192768
+k=32 N=4 progress d=9395240960
+k=32 N=4 progress d=268435456
+k=32 N=4 progress d=2147483648
+k=32 N=4 progress d=4026531840
+k=32 N=4 progress d=5905580032
+k=32 N=4 progress d=7784628224
+k=32 N=4 progress d=9663676416
+k=32 N=4 progress d=536870912
+k=32 N=4 progress d=2415919104
+k=32 N=4 progress d=4294967296
+k=32 N=4 progress d=6174015488
+k=32 N=4 progress d=8053063680
+k=32 N=4 progress d=9932111872
+k=32 N=4 progress d=805306368
+k=32 N=4 progress d=2684354560
+k=32 N=4 progress d=4563402752
+k=32 N=4 progress d=6442450944
+k=32 N=4 progress d=8321499136
+k=32 N=4 progress d=10200547328
+k=32 N=4 progress d=1073741824
+k=32 N=4 progress d=2952790016
+k=32 N=4 progress d=4831838208
+k=32 N=4 progress d=6710886400
+k=32 N=4 progress d=8589934592
+k=32 N=4 progress d=10468982784
+k=32 N=4 progress d=1342177280
+k=32 N=4 progress d=3221225472
+k=32 N=4 progress d=5100273664
+k=32 N=4 progress d=6979321856
+k=32 N=4 progress d=8858370048
+k=32 N=4 progress d=10737418240
+k=32 N=4 progress d=1610612736
+k=32 N=4 progress d=3489660928
+k=32 N=4 progress d=5368709120
+k=32 N=4 progress d=7247757312
+k=32 N=4 progress d=9126805504
+DONE k=32 N=4 dmin=3666666667 dmax=5499999999 hits=0
+DONE k=32 N=4 dmin=1 dmax=1833333333 hits=0
+DONE k=32 N=4 dmin=1833333334 dmax=3666666666 hits=0
+DONE k=32 N=4 dmin=7333333333 dmax=9166666665 hits=0
+DONE k=32 N=4 dmin=5500000000 dmax=7333333332 hits=0
+DONE k=32 N=4 dmin=9166666666 dmax=11000000000 hits=0

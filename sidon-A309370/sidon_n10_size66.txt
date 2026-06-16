@@ -1,5 +1,6 @@
-# A309370 a(10) >= 66: Sidon set in {0,1}^10, found by the Canopus loop (Opus 4.8 proposer, incremental kick-out local search)
-# 66 vectors, one per line. Verified by verify_sidon (2211 pairwise sums all distinct).
+# A309370 a(10) >= 66: Sidon set in {0,1}^10, integer componentwise addition.
+# 66 vectors, one per line. Generated from the canonical Vela record;
+# re-verify with: vela reproduce examples/sidon-sets/witnesses
 1100010010
 0100011001
 0110110010

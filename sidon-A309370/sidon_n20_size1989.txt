@@ -1,5 +1,6 @@
-# A309370 a(20) >= 1989: Sidon set in {0,1}^20, found by Vela multi-strategy construction search (Jun 2026; previous best 1941).
-# 1989 vectors, one per line. Verified by verify.py (B_2: all 1979055 pairwise sums distinct).
+# A309370 a(20) >= 1989: Sidon set in {0,1}^20, integer componentwise addition.
+# 1989 vectors, one per line. Generated from the canonical Vela record;
+# re-verify with: vela reproduce examples/sidon-sets/witnesses
 00000000000000000000
 00000000000000000001
 00000000000000000011

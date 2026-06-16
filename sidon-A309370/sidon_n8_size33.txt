@@ -1,5 +1,6 @@
-# A309370 a(8) >= 33: Sidon set in {0,1}^8, found by a verified computational search (iterated local search)
-# 33 vectors, one per line. Verified by verify_sidon (561 pairwise sums all distinct).
+# A309370 a(8) >= 33: Sidon set in {0,1}^8, integer componentwise addition.
+# 33 vectors, one per line. Generated from the canonical Vela record;
+# re-verify with: vela reproduce examples/sidon-sets/witnesses
 01100011
 10101010
 00001110

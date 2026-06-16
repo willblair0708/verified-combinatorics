@@ -1,5 +1,6 @@
-# A309370 a(11) >= 92: Sidon set in {0,1}^11, found by Vela multi-strategy construction search (Jun 2026; previous best 87).
-# 92 vectors, one per line. Verified by verify.py (B_2: all 4278 pairwise sums distinct).
+# A309370 a(11) >= 92: Sidon set in {0,1}^11, integer componentwise addition.
+# 92 vectors, one per line. Generated from the canonical Vela record;
+# re-verify with: vela reproduce examples/sidon-sets/witnesses
 00000000111
 00000100000
 00000110101

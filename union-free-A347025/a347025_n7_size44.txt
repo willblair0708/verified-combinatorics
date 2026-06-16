@@ -1,6 +1,4 @@
-# A347025 a(7) >= 44 witness: a union-free family of 44 nonempty subsets of {1..7}.
-# 'Union-free' = no member equals the union of some sub-collection of the others (OEIS A347025).
-# One set per line, elements space-separated. Independently checkable by verify.py.
+# A347025 a(7) >= 44: union-free family of subsets of {1..7}. From the Vela record.
 2 3
 1 2 3
 1 2 3 4

@@ -1,5 +1,6 @@
-# A309370 a(15) >= 364: Sidon set in {0,1}^15, found by Vela multi-strategy construction search (Jun 2026; previous best 334).
-# 364 vectors, one per line. Verified by verify.py (B_2: all 66430 pairwise sums distinct).
+# A309370 a(15) >= 364: Sidon set in {0,1}^15, integer componentwise addition.
+# 364 vectors, one per line. Generated from the canonical Vela record;
+# re-verify with: vela reproduce examples/sidon-sets/witnesses
 000000000110110
 000000001001101
 000000001101011

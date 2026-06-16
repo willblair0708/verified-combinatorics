@@ -1,4 +1,6 @@
-# A309370 a(23) >= 5179: Sidon set in {0,1}^23 (seeded extension)
+# A309370 a(23) >= 5179: Sidon set in {0,1}^23, integer componentwise addition.
+# 5179 vectors, one per line. Generated from the canonical Vela record;
+# re-verify with: vela reproduce examples/sidon-sets/witnesses
 01010111011010010000000
 00100111000111001000000
 11001001011100010000000

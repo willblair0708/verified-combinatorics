@@ -1,4 +1,6 @@
-# A309370 a(21) >= 2694: Sidon set in {0,1}^21, agent-FunSearch priority+seed cascade
+# A309370 a(21) >= 2694: Sidon set in {0,1}^21, integer componentwise addition.
+# 2694 vectors, one per line. Generated from the canonical Vela record;
+# re-verify with: vela reproduce examples/sidon-sets/witnesses
 010101110110100100000
 001001110001110010000
 110010010111000100000

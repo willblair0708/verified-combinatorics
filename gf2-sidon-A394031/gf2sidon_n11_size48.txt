@@ -1,7 +1,5 @@
-# Sidon set in GF(2)^11 (OEIS A394031), size 48. REPRODUCTION of a KNOWN result, not new.
-# Czerwinski & Pott, 'On large Sidon sets' (arXiv:2411.12911, 2024) state size 48 is the
-# best previously known for F_2^11 (the APN-graph construction is NOT an improvement).
-# Elements: integers 0..2047; Sidon = all pairwise XORs distinct (1128 distinct). Upper bound a(11)<=62.
+# Sidon set in GF(2)^11 (OEIS A394031), size 48. Generated from the Vela record.
+# Elements as integers; Sidon = all pairwise XORs distinct.
 0
 33
 72

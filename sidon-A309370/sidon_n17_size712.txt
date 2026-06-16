@@ -1,5 +1,6 @@
-# A309370 a(17) >= 712: Sidon set in {0,1}^17, found by agent-FunSearch (middle-weight structural priority + ILS)
-# 712 vectors, one per line. Verified by verify_sidon (253828 pairwise sums all distinct).
+# A309370 a(17) >= 712: Sidon set in {0,1}^17, integer componentwise addition.
+# 712 vectors, one per line. Generated from the canonical Vela record;
+# re-verify with: vela reproduce examples/sidon-sets/witnesses
 01010111011010010
 00100111000111001
 11001001011100010

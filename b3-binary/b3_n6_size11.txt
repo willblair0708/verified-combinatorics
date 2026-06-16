@@ -1,4 +1,4 @@
-# Maximum B_3 set in {0,1}^6: size 11 (PROVEN OPTIMAL by exhaustive integer-program search with hyperoctahedral symmetry breaking; independently verified)
+# B_3 set in {0,1}^6, size 11 (b3-binary). Generated from the Vela record.
 000010
 000100
 000111

@@ -1,4 +1,4 @@
-# Maximum B_3 set in {0,1}^4: size 6 (proven optimal, verified)
+# B_3 set in {0,1}^4, size 6 (b3-binary). Generated from the Vela record.
 0000
 0010
 0011

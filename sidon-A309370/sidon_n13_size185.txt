@@ -1,5 +1,6 @@
-# A309370 a(13) >= 185: Sidon set in {0,1}^13, found by Vela multi-strategy construction search (Jun 2026; previous best 169).
-# 185 vectors, one per line. Verified by verify.py (B_2: all 17205 pairwise sums distinct).
+# A309370 a(13) >= 185: Sidon set in {0,1}^13, integer componentwise addition.
+# 185 vectors, one per line. Generated from the canonical Vela record;
+# re-verify with: vela reproduce examples/sidon-sets/witnesses
 0000001000010
 0000001100010
 0000001101001
