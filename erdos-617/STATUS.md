@@ -23,11 +23,16 @@ graph on 26 vertices with α ≤ 5 and ≤ 11 edges per 6-set):
   configuration in the q=10 census infeasible at its cap (monotonicity then
   closes q=8,9). The globally hardest configs (the cap-20 atoms) are already
   individually machine-verified infeasible (`artifacts/road66/handlemma/`).
-- **Full 6,969-config q=10 sweep: IN PROGRESS** (`all-r-partial/`-independent;
-  engine `sweep66.py`). 0 feasible found so far. On completion with all
-  infeasible: 5·66 = 330 > 325 = e(K₂₆) ⟹ no balanced 5-colouring ⟹ **the r=5
-  case is resolved** (computer-assisted; trust base = Füredi 2015 + the validated
-  encoder, no hand-lemma dependency).
+- **Full 6,969-config q=10 sweep: HALTED for cost at 752/6969** (2026-06-16;
+  engine `sweep66.py`, n2-standard-128). Of the 752 decided: **717 INFEASIBLE,
+  35 unresolved (UNKNOWN), 0 FEASIBLE** (`artifacts/road66/partial-sweep-halted/`).
+  The sweep was stopped because the brute-force certificate was tracking
+  ~$150–200 of compute for an incremental upgrade; m\*≥66 is therefore **strongly
+  evidenced but NOT certified**. Evidence for m\*≥66: the globally hardest configs
+  (cap-20 atoms) are individually verified infeasible, 0 feasible anywhere in
+  the campaign, and 717/752 swept configs infeasible. **On a future completion
+  with all infeasible**: 5·66 = 330 > 325 = e(K₂₆) ⟹ no balanced 5-colouring ⟹
+  the r=5 case would be resolved (resumable from the partial JSONL).
 
 ## Layer 2 — all r (the full conjecture): OPEN, with verified partial progress
 

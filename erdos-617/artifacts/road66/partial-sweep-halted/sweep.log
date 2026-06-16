@@ -1,0 +1,21 @@
+START Mon Jun 15 23:55:33 UTC 2026 nproc=128 host=erdos617-sweep
+/usr/local/lib/python3.11/dist-packages/networkx/algorithms/graph_hashing.py:211: UserWarning: The hashes produced for graphs without node or edge attributes changed in v3.5 due to a bugfix (see documentation).
+  node_labels = _init_node_labels(G, edge_attr, node_attr)
+  (8, 5, 5, 5, 3): cumulative 181 (896s)
+  (8, 5, 5, 4, 4): cumulative 368 (896s)
+  (7, 6, 5, 5, 3): cumulative 422 (898s)
+  (7, 6, 5, 4, 4): cumulative 476 (898s)
+  (7, 5, 5, 5, 4): cumulative 2898 (1097s)
+  (6, 6, 5, 5, 4): cumulative 4017 (1099s)
+  (6, 5, 5, 5, 5): cumulative 6969 (1103s)
+enumerated 6969 q=10 configs across 7 shapes in 1103s -> /opt/vc/erdos-617/artifacts/road66/configs_q10.pkl
+ENUM_DONE Tue Jun 16 00:13:56 UTC 2026
+total=6969 already_infeasible=0 todo=6969
+=== PASS 1: TL=3000 WK=4 CC=32 on 6969 ===
+  [p1] 100/6969  survivors=0 feas=0
+  [p1] 200/6969  survivors=0 feas=0
+  [p1] 300/6969  survivors=0 feas=0
+  [p1] 400/6969  survivors=0 feas=0
+  [p1] 500/6969  survivors=0 feas=0
+  [p1] 600/6969  survivors=9 feas=0
+  [p1] 700/6969  survivors=28 feas=0
