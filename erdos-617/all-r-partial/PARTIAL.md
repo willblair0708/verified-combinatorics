@@ -182,7 +182,13 @@ by the brute-force q=10 CP-SAT sweep** — for which there is no general-r analo
      surplus with α ≤ r to force e(G) > A_r. Gap: the critical subgraph may be
      small.
    - *affine-plane rigidity*: classify balanced K_{r²} colourings as
-     affine-plane-like and show none extends to K_{r²+1}. Likely as hard as #617.
+     affine-plane-like and show none extends to K_{r²+1}. **The second half is
+     now done [VERIFIED]:** the standard affine K_{q²} colouring provably does
+     *not* extend to a balanced K_{q²+1} by one vertex (two singleton-colour
+     lines of different directions would meet in a doubly-coloured point;
+     brute-forced for q=3 in `affine_nonextension.py`). This kills the obvious
+     *counterexample* route. The open half is the classification (are all
+     balanced K_{q²} colourings affine?) — likely as hard as #617 itself.
    - *spectral / Motzkin–Straus*: Lagrangian bound per H_c summed over colours;
      the slack is only the Turán deficit — it does not see the integer blocking
      obstruction, so it reproduces stability pressure but not the final `+1`.
