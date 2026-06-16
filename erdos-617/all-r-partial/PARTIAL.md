@@ -193,6 +193,21 @@ by the brute-force q=10 CP-SAT sweep** — for which there is no general-r analo
      the slack is only the Turán deficit — it does not see the integer blocking
      obstruction, so it reproduces stability pressure but not the final `+1`.
 
+## 7b. The rooted surplus route (alternative framing)  **[partly VERIFIED]**
+
+Root a counterexample at a maximum independent set I (|I|=r, since α(G)=r). With
+O=V∖I, F=G[O], L=#root links, the target e(G)≥A_r+1 becomes the **surplus
+inequality** `(e(F)−y0) + (L−m) ≥ C_r`, where y0 = C(r,2)+(r−1)C(r−1,2) is the
+Turán minimum of e(F), m=r²−r+1, and C_r=C(r,2)+1 (arithmetic VERIFIED, r=3..6).
+
+- **[VERIFIED]** *Exact Turán base is impossible:* `e(F)=y0` admits no valid
+  root-linking (`turan_base.py`, INFEASIBLE for r=3,4; clean all-r hand proof via
+  the perfect-matching-on-Q0 + small-part-transversal argument). So `e(F)≥y0+1`
+  — **one unit** of the required C_r surplus, for every r.
+- **[OPEN]** the full surplus `≥ C_r = Θ(r²)`: only 1 unit is proved. Reduces to
+  the weighted blocker `|D|+τ ≥ C(r,2)+1` over the near-Turán range
+  `1 ≤ surplus ≤ C(r,2)`. This is the same barrier as s≤2, in rooted clothing.
+
 ## 8. Bottom line
 
 The **only fully VERIFIED new result** here is the all-r DP/matching blocking
