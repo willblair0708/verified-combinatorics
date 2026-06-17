@@ -1,0 +1,9 @@
+# Sidon set in GF(2)^5 (OEIS A394031), size 7. Generated from the Vela record.
+# Elements as integers; Sidon = all pairwise XORs distinct.
+0
+6
+10
+13
+16
+17
+25

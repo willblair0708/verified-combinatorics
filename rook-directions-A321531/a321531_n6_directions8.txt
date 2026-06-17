@@ -1,0 +1,2 @@
+# A321531 a(6) >= 8: max distinct rook directions, n x n board. From the Vela record.
+4 6 2 1 5 3

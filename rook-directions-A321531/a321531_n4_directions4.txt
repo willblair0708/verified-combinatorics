@@ -1,0 +1,2 @@
+# A321531 a(4) >= 4: max distinct rook directions, n x n board. From the Vela record.
+3 2 4 1

@@ -1,0 +1,3 @@
+# A347025 a(2) >= 2: union-free family of subsets of {1..2}. From the Vela record.
+1
+2
